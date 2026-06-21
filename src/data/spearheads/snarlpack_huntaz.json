@@ -1,0 +1,302 @@
+{
+  "id": "snarlpack_huntaz",
+  "faction": "Gloomspite Gitz",
+  "spearheadName": "Snarlpack Huntaz",
+  "battleTraits": [
+    {
+      "name": "Fast as Frazzlegit",
+      "timing": "Passive",
+      "effect": "Friendly units can use CHARGE abilities even if they used a RETREAT ability in the same turn. In addition, no mortal damage is inflicted on friendly units by RETREAT abilities.",
+      "phases": [
+        "Movement",
+        "Charge"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Kunnin' as a Snarlfang",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "For the rest of the turn, add 1 to the Rend characteristic of melee weapons used by friendly units while they are wholly within 12\" of the bearer.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Glare of Frazzlegit",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "declare": "Pick an enemy unit in combat with your general to be the target.",
+      "effect": "Subtract 1 from hit rolls for attacks made by the target for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Sunsteala Shard",
+      "timing": "Once Per Battle, Enemy Shooting Phase",
+      "effect": "For the rest of the turn, friendly units cannot be targeted by shooting attacks while they are wholly within 6\" of this unit, unless the attacking unit is in combat with the target unit.",
+      "phases": [
+        "Enemy Shooting"
+      ]
+    },
+    {
+      "name": "Devious Backstabba",
+      "timing": "End of Any Turn",
+      "declare": "Pick an enemy HERO in combat with this unit to be the target.",
+      "effect": "Roll a D3. On a 2+, inflict an amount of mortal damage on the target equal to the roll.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Flankin' Force",
+      "timing": "Once Per Battle, Start of First Battle Round",
+      "effect": "Pick up to 2 friendly units. Remove them from the battlefield and set them up again anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Frazzleboom",
+      "timing": "Passive",
+      "effect": "Each time a friendly WAR MACHINE is destroyed, before removing it from play, pick an enemy unit within 3\" of that WAR MACHINE and roll a D3. On a 2+, inflict an amount of mortal damage on that unit equal to the roll.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "snarlboss",
+      "name": "Snarlboss",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "12\"",
+        "health": 5,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Boss Loppa",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Snarlfang’s Slavering Jaws",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Great Snarlin' Howl",
+          "timing": "Once Per Turn (Army), Your Hero Phase",
+          "declare": "Pick this unit and another friendly unit within this unit’s combat range to be the targets.",
+          "effect": "Roll a dice. On a 3+, add 1 to the Rend characteristic and the Attacks characteristic of the targets' Companion melee weapons for the rest of the turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "CAVALRY"
+      ]
+    },
+    {
+      "id": "wolfgit_retinue",
+      "name": "Wolfgit Retinue",
+      "isGeneral": false,
+      "models": 2,
+      "stats": {
+        "movement": "12\"",
+        "health": 2,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Grot Bow",
+          "type": "Ranged",
+          "range": "15\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Stabbin' Stikka",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Snarlfang’s Slavering Jaws",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "I Got Dis, Boss",
+          "timing": "Passive",
+          "effect": "While a friendly Snarlboss is within this unit’s combat range, both this unit and that Snarlboss have WARD (5+).",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY"
+      ]
+    },
+    {
+      "id": "snarlpack_cavalry",
+      "name": "Snarlpack Cavalry",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "12\"",
+        "health": 3,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Pointy Skewas",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Giant Snarlfang's Jaws",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Frazzleburned Scrap",
+          "timing": "Passive",
+          "effect": "This unit has STRIKE FIRST if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY"
+      ]
+    },
+    {
+      "id": "sunsteala_wheelas",
+      "name": "Sunsteala Wheelas",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "12\"",
+        "health": 6,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Grot Bow",
+          "type": "Ranged",
+          "range": "15\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Wheela Slicers and Stabbin' Stikka",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Snarlfangs' Slavering Jaws",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Careening Destruction",
+          "timing": "Your Movement Phase",
+          "effect": "This unit can move a distance up to its Move characteristic. It can pass through other models and the combat ranges of enemy units, but it cannot end that move in combat. Then, pick up to 1 enemy INFANTRY unit that this unit passed across during that move to be the target. Inflict D3 mortal damage on the target.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE"
+      ]
+    }
+  ]
+}

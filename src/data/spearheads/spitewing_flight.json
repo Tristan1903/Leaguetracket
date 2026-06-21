@@ -1,0 +1,280 @@
+{
+  "id": "spitewing_flight",
+  "faction": "Sylvaneth",
+  "spearheadName": "Spitewing Flight",
+  "battleTraits": [
+    {
+      "name": "Target of Vengeance",
+      "timing": "Once Per Battle Round (Army), Start of Battle Round",
+      "effect": "If there is no enemy quarry on the battlefield, pick an enemy unit on the battlefield to be the target. The target is the quarry for the rest of the battle.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Airborne Cohesion",
+      "timing": "Passive",
+      "effect": "Friendly units have a coherency range of 2\" (instead of 1\").",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Song of the Hunt",
+      "timing": "Passive",
+      "effect": "Gain 1 chord each time the enemy quarry is destroyed. Cumulative effects: 1 chord (Add 1 to run/charge rolls wholly within 9\" of quarry), 2 chords (Add 1 to hit rolls wholly within 9\" of quarry), 3+ chords (Add 1 to wound rolls wholly within 9\" of quarry).",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Head of the Hunt",
+      "timing": "Passive",
+      "effect": "Add 1 to the Rend characteristic of your general's melee weapons while the enemy quarry is within 9\" of and visible to them.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Zephyrkin",
+      "timing": "Reaction: You declared a FIGHT ability for your general",
+      "effect": "If your general charged this turn, they can move up to 2D6\" after that FIGHT ability has been resolved. They cannot end that move in combat.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Bold Spirit",
+      "timing": "Once Per Battle (Army), Any Hero Phase",
+      "effect": "For the rest of the turn, add 1 to wound rolls for friendly units' combat attacks while within your general's combat range.",
+      "phases": [
+        "Hero",
+        "Combat"
+      ]
+    },
+    {
+      "name": "Cunning Pursuer",
+      "timing": "Passive",
+      "effect": "While your general is in combat, add 1 to charge rolls for friendly units wholly within 12\". Add 2 instead while in combat with the quarry.",
+      "phases": [
+        "Charge"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Leaves on the Wind",
+      "timing": "Once Per Battle (Army), End of Any Turn",
+      "effect": "Pick a friendly unit that is in combat. The target can immediately use the 'Retreat' ability as if it were your movement phase and no mortal damage is inflicted on it if it does so.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Lifebringers",
+      "timing": "Once Per Turn (Army), End of Any Turn",
+      "effect": "Heal (D3) each friendly unit.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "arch_revenant",
+      "name": "Arch-Revenant",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "12\"",
+        "health": 6,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Arch-Revenant's Glaive",
+          "type": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Heartwood Hunting Horn",
+          "timing": "Your Hero Phase",
+          "effect": "Pick a visible friendly unit wholly within 12\" of this unit to be the target. Until your next turn, when determining which effects of the 'Song of the Hunt' ability apply to the target, count as having 1 additional chord.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "gossamid_archers",
+      "name": "Gossamid Archers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "12\"",
+        "health": 2,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Gossamid Bow",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Cruel Talons",
+          "type": "Melee",
+          "attacks": 1,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Zephyrspites",
+          "timing": "Reaction: You declared a Shoot ability for this unit",
+          "effect": "After that Shoot ability has been resolved, this unit can move up to D6\". It cannot move into combat during any part of that move.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "spiterider_lancers",
+      "name": "Spiterider Lancers",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "12\"",
+        "health": 5,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Spiterider Lance",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Dragonspite's Mandibles",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Spiterider Charge",
+          "timing": "Any Charge Phase",
+          "effect": "If this unit charged this phase, pick a visible enemy unit within 1\" of it to be the target. Roll a D3 (add 1 to the roll if the target is the enemy quarry). On a 2+, inflict an amount of mortal damage on the target equal to the roll.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "revenant_seekers",
+      "name": "Revenant Seekers",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "12\"",
+        "health": 5,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Seeker's Sickle",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        },
+        {
+          "name": "Dragonspites' Mandibles",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Deafening Drone",
+          "timing": "Any Combat Phase",
+          "effect": "If this unit did not charge this turn, pick an enemy unit in combat with it. Roll a dice. If the roll exceeds the target's Control characteristic, subtract 1 from the Attacks characteristic of the target's melee weapons for the rest of the turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY"
+      ]
+    }
+  ]
+}

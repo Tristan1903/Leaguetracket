@@ -1,0 +1,328 @@
+{
+  "id": "sunblooded_prowlers",
+  "faction": "Seraphon",
+  "spearheadName": "Sunblooded Prowlers",
+  "battleTraits": [
+    {
+      "name": "Hidden Hunters",
+      "timing": "Your Movement Phase",
+      "effect": "Your 2 Hunters of Huanchi units and the Spawn of Chotec are not set up during deployment. From the third battle round onwards, they can be set up anywhere more than 6\" from all enemy units using the 'Chameleon Ambush' ability.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Chameleon Ambush",
+      "timing": "Your Movement Phase",
+      "effect": "Set up this unit anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Vengeance of Azyr",
+      "timing": "End of Any Turn",
+      "declare": "Pick each enemy unit in combat with a friendly Saurus unit to be the targets.",
+      "effect": "Roll a dice for each target. On a 4+, inflict 1 mortal damage on the target.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Instinctive Commander",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible friendly unit wholly within 12\" of your general and not in combat to be the target.",
+      "effect": "Roll a dice. On a 3+, the target can immediately use the 'Normal Move' ability as if it were your movement phase.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Savage Mauling",
+      "timing": "Any Combat Phase",
+      "declare": "Pick an enemy unit in combat with your general to be the target.",
+      "effect": "Ward rolls cannot be made for the target for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Venomite Swarm",
+      "timing": "Any Combat Phase",
+      "declare": "Pick an enemy unit in combat with your general to be the target.",
+      "effect": "If your general's Venomites token is on the battlefield, roll a D3. On a 1, remove that token from the battlefield. On a 2+, inflict an amount of mortal damage on the target equal to the roll.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Blessed by the Old Ones",
+      "timing": "End of Any Turn",
+      "declare": "Your general must use this ability if it has been destroyed. Roll a dice.",
+      "effect": "On a 2+, you can set up a replacement unit with 1 Sunblood model anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Scaled Aegis",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a friendly Saurus unit to be the target.",
+      "effect": "Roll a dice. On a 3+, that unit has Ward (6+) until the start of your next turn.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Followers of Huanchi",
+      "timing": "Your Shooting Phase",
+      "declare": "Pick a friendly Skink unit to be the target.",
+      "effect": "Roll a dice. On a 3+, the target's ranged weapons have Crit (Auto-wound) for the rest of the turn, including Companion weapons.",
+      "phases": [
+        "Shooting"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "sunblood_pack",
+      "name": "Sunblood Pack",
+      "isGeneral": true,
+      "models": 3,
+      "stats": {
+        "movement": "5\"",
+        "health": 3,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Celestite Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Scaled Protectors",
+          "timing": "Passive",
+          "effect": "While this unit includes a Sunblood, ignore the first damage point that would be allocated to this unit each phase and add 1 to this unit's control score.",
+          "phases": [
+            "Any"
+          ]
+        },
+        {
+          "name": "Savage Bellow",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a visible friendly unit wholly within 12\" of this unit to be the target and roll a dice.",
+          "effect": "On a 3+, the target's weapons have Crit (2 Hits) for the rest of the turn, including Companion weapons.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "SAURUS"
+      ]
+    },
+    {
+      "id": "saurus_warriors",
+      "name": "Saurus Warriors",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Celestite Club",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Ordered Cohorts",
+          "timing": "Passive",
+          "effect": "Add 1 to save rolls for this unit while it is contesting an objective you control.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "SAURUS"
+      ]
+    },
+    {
+      "id": "hunters_of_huanchi",
+      "name": "Hunters of Huanchi",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "8\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Dartpipe",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Feeble Claws",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Star-venom",
+          "timing": "Any Shooting Phase",
+          "declare": "Pick an enemy unit that had any damage points allocated to it this turn by attacks made with this unit's Dartpipes to be the target.",
+          "effect": "Roll a dice. On a 2+, subtract 1 from wound rolls for the target's combat attacks for the rest of the turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "SKINK"
+      ]
+    },
+    {
+      "id": "terrawings",
+      "name": "Terrawings",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "12\"",
+        "health": 2,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Snapping Beaks",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "NERVE-SHREDDING SCREECHES",
+          "timing": "Any Combat Phase",
+          "declare": "Pick an enemy unit in combat with this unit to be the target.",
+          "effect": "Roll a dice. On a 4+, subtract 1 from hit rolls for the target's combat attacks for the rest of the turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "BEAST",
+        "FLY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "spawn_of_chotec",
+      "name": "Spawn of Chotec",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 8,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Glob of Flame Acid",
+          "type": "Ranged",
+          "range": "16\"",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": "D3+3",
+          "keywords": [
+            "Companion"
+          ]
+        },
+        {
+          "name": "Fiery Maw",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 2,
+          "damage": 3,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Sun Acolytes",
+          "timing": "Passive",
+          "effect": "This unit has a crew of 3 Sun Acolytes that are tokens. Add 1 to this unit's control score for each Sun Acolyte it has. If this unit has no Sun Acolytes, it has a maximum control score of 1. Each time you make an unmodified save roll of 1 for this unit, remove 1 of its Sun Acolytes from the battlefield after the Attack ability has been resolved (the damage point is still inflicted).",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "BEAST",
+        "SKINK"
+      ]
+    }
+  ]
+}

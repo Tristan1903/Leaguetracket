@@ -1,0 +1,203 @@
+{
+  "id": "bloodcrave_hunt",
+  "faction": "Soulblight Gravelords",
+  "spearheadName": "Bloodcrave Hunt",
+  "battleTraits": [
+    {
+      "name": "Death's Descent",
+      "timing": "Your Movement Phase",
+      "effect": "Vargheists are not set up at deployment. Round 3 onwards: Set up anywhere more than 6\" from enemies.",
+      "phases": ["Movement"]
+    },
+    {
+      "name": "The Hunger",
+      "timing": "Passive",
+      "effect": "After a Vampire unit fights, Heal (X) where X is the damage points allocated by those attacks.",
+      "phases": ["Combat"]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Grave-sand Shard",
+      "timing": "Once Per Battle, Reaction",
+      "effect": "Declare when using Skeleton Legion. Add 1 to each legion roll for that unit.",
+      "phases": ["Combat"]
+    },
+    {
+      "name": "Aura of Night",
+      "timing": "Passive",
+      "effect": "Ignore negative modifiers to save rolls for shooting attacks targeting the general.",
+      "phases": ["Shooting"]
+    },
+    {
+      "name": "Cloud of Bats",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "effect": "Remove general from battlefield and set up again more than 6\" from enemies.",
+      "phases": ["Movement"]
+    },
+    {
+      "name": "Spirit Gale",
+      "timing": "Your Hero Phase",
+      "effect": "Cast 7+. Inflict 1 mortal damage on each enemy unit on the battlefield.",
+      "phases": ["Hero"]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Endless Legions",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "effect": "Replace a destroyed Deathrattle Skeletons unit with D6 models.",
+      "phases": ["Movement"]
+    },
+    {
+      "name": "Ruinous Chargers",
+      "timing": "Any Charge Phase",
+      "effect": "If Blood Knights charged, inflict D3 mortals on each enemy unit they passed across.",
+      "phases": ["Charge"]
+    }
+  ],
+  "units": [
+    {
+      "id": "vampire_lord",
+      "name": "Vampire Lord",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 5,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Dynastic War-relic",
+          "type": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Vile Transference",
+          "timing": "Your Hero Phase",
+          "effect": "Cast 6+. Roll dice = target's Health. Each 5+ = 1 mortal damage and Heal (1) general.",
+          "phases": ["Hero"]
+        }
+      ],
+      "keywords": ["HERO", "WIZARD", "VAMPIRE", "WARD (6+)"]
+    },
+    {
+      "id": "blood_knights",
+      "name": "Blood Knights",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "10\"",
+        "health": 3,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Templar Lance/Blade",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": ["Charge (+1 Damage)"]
+        },
+        {
+          "name": "Nightmare's Hooves",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": ["Companion"]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Riders of Ruin",
+          "timing": "Passive",
+          "effect": "Can pass across enemy Infantry as if it had Fly.",
+          "phases": ["Movement"]
+        }
+      ],
+      "keywords": ["CAVALRY", "VAMPIRE", "WARD (6+)"]
+    },
+    {
+      "id": "vargheists",
+      "name": "Vargheists",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "12\"",
+        "health": 4,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Murderous Fangs",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": ["Crit (2 Hits)"]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "The Scent of Gore",
+          "timing": "Passive",
+          "effect": "+1 to wound vs damaged units.",
+          "phases": ["Combat"]
+        }
+      ],
+      "keywords": ["INFANTRY", "VAMPIRE", "FLY", "WARD (6+)"]
+    },
+    {
+      "id": "deathrattle_skeletons",
+      "name": "Deathrattle Skeletons",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "4\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Ancient Weapon",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Skeleton Legion",
+          "timing": "Your Combat Phase",
+          "effect": "Roll D6 for each slain model; on a 6, return it.",
+          "phases": ["Combat"]
+        }
+      ],
+      "keywords": ["INFANTRY", "WARD (6+)"]
+    }
+  ]
+}

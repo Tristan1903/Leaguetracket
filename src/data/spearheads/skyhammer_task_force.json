@@ -1,0 +1,376 @@
+{
+  "id": "skyhammer_task_force",
+  "faction": "Kharadron Overlords",
+  "spearheadName": "Skyhammer Task Force",
+  "battleTraits": [
+    {
+      "name": "Ply the Skies",
+      "timing": "Reaction: You declared a non-Charge Move ability for an Arkanaut Frigate",
+      "declare": "Used by the Arkanaut Frigate that is using that MOVE ability.",
+      "effect": "Pick a friendly INFANTRY unit that is wholly within the combat range of that Arkanaut Frigate and not in combat to be transported. Remove that INFANTRY unit from the battlefield. Then, when the Arkanaut Frigate ends its move, set up the INFANTRY unit on the battlefield again, wholly within the combat range of the Arkanaut Frigate and not in combat. A unit cannot use CHARGE abilities if it was transported in the same turn.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Masterwrought Armour",
+      "timing": "Passive",
+      "effect": "Your general has WARD (6+).",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Flask of Vintage Gorogna",
+      "timing": "Once Per Battle, Any Hero Phase",
+      "effect": "Heal (D6) your general.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "There's No Reward Without Risk",
+      "timing": "Once Per Battle, Reaction: You declared a CHARGE ability for a unit wholly within 12\" of your general",
+      "effect": "You can re-roll the charge roll for that Charge ability.",
+      "phases": [
+        "Charge"
+      ]
+    },
+    {
+      "name": "Leave No Duardin Behind",
+      "timing": "Once Per Battle, Your Hero Phase",
+      "declare": "Pick a friendly Arkanaut Company unit wholly within 12\" of your general and roll a dice for each slain model from that unit.",
+      "effect": "For each 4+, you can return 1 slain model to that unit.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Assault Boat",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "declare": "Pick a friendly unit that was transported this turn to use this ability.",
+      "effect": "That unit can still use CHARGE abilities later in the turn.",
+      "phases": [
+        "Movement",
+        "Charge"
+      ]
+    },
+    {
+      "name": "Disengage",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "declare": "Pick a friendly Arkanaut Frigate to use this ability.",
+      "effect": "If that unit uses a RETREAT ability this phase, no mortal damage is inflicted on it and it can still use SHOOT abilities later in the turn.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "arkanaut_admiral",
+      "name": "Arkanaut Admiral",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "4\"",
+        "health": 6,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Masterwork Volley Pistol",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Skalfhammer",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 3,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Always Take What You Are Owed",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly Arkanaut Company unit wholly within 12\" of this unit to be the target.",
+          "effect": "Add D6 to the target’s control score until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "skywardens",
+      "name": "Skywardens",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "12\"",
+        "health": 2,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Vulcaniser Pistol",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Aethermatic Volley Gun",
+          "type": "Ranged",
+          "range": "15\"",
+          "attacks": "2D6",
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Skypike",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        },
+        {
+          "name": "Gun Butt",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Timed Charges",
+          "timing": "End of Any Turn",
+          "declare": "Pick an enemy unit in combat with this unit to be the target, then roll a dice.",
+          "effect": "On a 2+, inflict 1 mortal damage on the target, and this unit can immediately use the ‘Retreat’ ability without any mortal damage being inflicted on it.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "arkanaut_company",
+      "name": "Arkanaut Company",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "4\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Privateer Pistol",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Aethermatic Volley Gun",
+          "type": "Ranged",
+          "range": "15\"",
+          "attacks": "2D6",
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Light Skyhook",
+          "type": "Ranged",
+          "range": "15\"",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 2,
+          "damage": "D3",
+          "keywords": []
+        },
+        {
+          "name": "Arkanaut Cutter",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Gun Butt",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Skypike",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Glory-Seekers",
+          "timing": "Passive",
+          "effect": "Add 1 to hit rolls for attacks made by this unit that target a unit contesting an objective.",
+          "phases": [
+            "Shooting",
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "arkanaut_frigate",
+      "name": "Arkanaut Frigate",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "12\"",
+        "health": 15,
+        "save": "3+",
+        "control": 5
+      },
+      "weapons": [
+        {
+          "name": "Heavy Skyhook",
+          "type": "Ranged",
+          "range": "24\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 2,
+          "damage": "D6",
+          "keywords": []
+        },
+        {
+          "name": "Aethershot Carbines",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 4,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Crew’s Boarding Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 8,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Battle Damaged",
+          "timing": "Passive",
+          "effect": "While this unit has 10 or more damage points, the Attacks characteristic of its Heavy Skyhook is 1.",
+          "phases": [
+            "Shooting"
+          ]
+        },
+        {
+          "name": "Bomb Racks",
+          "timing": "Once Per Battle, Your Movement Phase",
+          "declare": "Pick an enemy unit that this unit passed across this phase to be the target, then roll a dice.",
+          "effect": "On a 2+, inflict D3 mortal damage on the target.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE",
+        "FLY"
+      ]
+    }
+  ]
+}

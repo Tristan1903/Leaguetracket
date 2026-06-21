@@ -1,0 +1,265 @@
+{
+  "id": "bad_moon_madmob",
+  "faction": "Gloomspite Gitz",
+  "spearheadName": "Bad Moon Madmob",
+  "battleTraits": [
+    {
+      "name": "Under the Light of the Bad Moon",
+      "timing": "Once Per Battle, Start of the First Battle Round",
+      "declare": "Pick a territory (either friendly territory or enemy territory) to be under the Light of the Bad Moon. If both players can use this ability, the players roll off and the winner picks a territory.",
+      "effect": "The territory picked remains under the Light of the Bad Moon in the first and second battle rounds. In the third and fourth battle rounds, the other territory is under the Light of the Bad Moon. While a friendly unit is wholly within the territory that is under the Light of the Bad Moon, the appropriate effect below applies to it:\n- Frothing Zealots (Moonclan Stabbas): Add 3 to its control score.\n- Lunar Squigs (Squig Hoppers): No mortal damage is inflicted on it when it uses RETREAT abilities.\n- Moonlit Hide (Rockgut Troggoths): Add 1 to save rolls for it.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Squigalanche",
+      "timing": "Your Movement Phase",
+      "effect": "One of your units of Squig Hoppers is not set up during the deployment phase. Instead, from the third battle round onwards, they can use the following ability:\n- Set up this unit wholly within your territory, wholly within 3\" of a battlefield edge and more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Fight Another Day",
+      "timing": "End of Any Turn",
+      "declare": "Pick your general to use this ability if they used a FIGHT ability this turn.",
+      "effect": "Your general can make a 2D6\" move but cannot end that move in combat.",
+      "phases": [
+        "End of Turn"
+      ]
+    },
+    {
+      "name": "The Clammy Cowl",
+      "timing": "Passive",
+      "effect": "Subtract 1 from hit rolls for attacks that target your general.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Hallucinogenic Fungus Brew",
+      "timing": "Passive",
+      "effect": "Your general has WARD (4+) in the first battle round, WARD (5+) in the second battle round, and WARD (6+) in the third and fourth battle rounds.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Nightshade Mushroom",
+      "timing": "Once Per Battle, Enemy Movement Phase",
+      "declare": "Pick a friendly unit within your general's combat range.",
+      "effect": "That unit cannot be targeted by shooting attacks in the next shooting phase.",
+      "phases": [
+        "Enemy Movement"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "The Lunatic Hordes",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a friendly Moonclan Stabbas unit to use this ability.",
+      "effect": "You can return up to D3 slain models to that unit.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "The Hand of Gork",
+      "timing": "Once Per Battle (Army), Your Movement Phase",
+      "declare": "Pick a friendly unit that is not in combat to use this ability.",
+      "effect": "Remove that unit from the battlefield and set it up again more than 9\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "loonboss",
+      "name": "Loonboss",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 5,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Moon-slicer",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "I'm Da Boss",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly Moonclan Stabbas unit wholly within 12\" of this unit to be the target.",
+          "effect": "Pick 1:\n- Beckon the Loonatic Hordes: If the target unit is not in combat, you can return D6 slain models to it.\n- Stab 'Em Good!: Add 1 to hit rolls for attacks made by the target unit until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "moonclan_stabbas",
+      "name": "Moonclan Stabbas",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Stabba",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Netters",
+          "timing": "Any Combat Phase",
+          "declare": "Pick an enemy INFANTRY unit in combat with this unit to be the target.",
+          "effect": "Roll a dice. On a 2+, subtract 1 from hit rolls for attacks made by the target unit this phase.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "squig_hoppers",
+      "name": "Squig Hoppers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "D6+8\"",
+        "health": 2,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Slitta",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Squig's Fang-filled Gob",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Boing! Boing! Boing!",
+          "timing": "Any Movement Phase",
+          "declare": "Pick an enemy unit that any models in this unit passed across this phase to be the target, then roll a dice for each model in this unit that did so.",
+          "effect": "For each 4+, inflict 1 mortal damage on the target.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "rockgut_troggoths",
+      "name": "Rockgut Troggoths",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "6\"",
+        "health": 5,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Throwin' Boulders",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 1,
+          "hit": "5+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": "D3",
+          "keywords": []
+        },
+        {
+          "name": "Massive Stone Maul",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": 3,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Regeneration",
+          "timing": "Start of Any Turn",
+          "effect": "Heal (D3) this unit.",
+          "phases": [
+            "Start of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (5+)"
+      ]
+    }
+  ]
+}

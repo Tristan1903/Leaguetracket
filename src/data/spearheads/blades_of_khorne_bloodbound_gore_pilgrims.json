@@ -1,0 +1,269 @@
+{
+  "id": "blades_of_khorne_bloodbound_gore_pilgrims",
+  "faction": "Blades of Khorne",
+  "spearheadName": "Bloodbound Gore Pilgrims",
+  "battleTraits": [
+    {
+      "name": "The Blood Tithe",
+      "timing": "Passive",
+      "effect": "Each time a unit is destroyed during the battle, you receive 1 blood tithe point.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Murderlust",
+      "timing": "Once Per Turn, Any Hero Phase",
+      "effect": "Spend 1 blood tithe point and pick up to D3 friendly units. Each of those units can move D6\" (roll for each).",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Heads Must Roll",
+      "timing": "Once Per Turn, Any Hero Phase",
+      "effect": "Spend 3 blood tithe points and pick up to 3 friendly units. Add 1 to the Rend characteristic of those units’ melee weapons until the start of your next turn.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Resanguination",
+      "timing": "Your Hero Phase",
+      "effect": "Pick a visible friendly unit wholly within 16\" of your general, then make a chanting roll of D6. On a 3+, Heal (D3) that unit.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "The Crimson Plate",
+      "timing": "Passive",
+      "effect": "Your general has WARD (5+).",
+      "phases": [
+        "Any"
+      ],
+      "modifiers": [
+        {
+          "target": "stat",
+          "property": "ward",
+          "value": "5+"
+        }
+      ]
+    },
+    {
+      "name": "Headhunter",
+      "timing": "Any Combat Phase",
+      "effect": "Pick an enemy HERO in combat with your general. Your general has STRIKE-FIRST this phase, but all attacks made by them this phase must target that enemy HERO.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Unholy Flames",
+      "timing": "Your Hero Phase",
+      "effect": "Pick a visible friendly unit wholly within 16\" of your general, then make a chanting roll of D6. On a 4+, add 1 to the Rend characteristic of that unit's melee weapons until the start of your next turn.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Favoured of Khorne",
+      "timing": "Once Per Turn, Start of Your Turn",
+      "effect": "Roll a dice. On a 2+, you receive 1 blood tithe point.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Blood-Woken Runes",
+      "timing": "Passive",
+      "effect": "Friendly units have WARD (5+) if they have used a FIGHT ability in the same phase.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "slaughterpriest",
+      "name": "Slaughterpriest",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 6,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Hackblade and Wrath-hammer",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Blood Boil",
+          "timing": "Your Hero Phase",
+          "effect": "Pick a visible enemy unit within 16\" of this unit to be the target, then make a chanting roll of D6. On a 4+, inflict D3 mortal damage on the target.",
+          "phases": [
+            "Hero"
+          ]
+        },
+        {
+          "name": "Blood Sacrifice",
+          "timing": "Your Hero Phase",
+          "effect": "Pick a friendly unit within this unit’s combat range to be the target. Roll a dice. On a 2+, inflict D3 mortal damage on the target and you gain 1 blood tithe point.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "PRIEST",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "blood_warriors",
+      "name": "Blood Warriors",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Goreaxe and Gorefist",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "No Respite",
+          "timing": "Passive",
+          "effect": "Each time a model in this unit is slain, you can pick an enemy unit in combat with this unit and roll a dice. On a 4+, inflict 1 mortal damage on that enemy unit.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "bloodreavers",
+      "name": "Bloodreavers",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Reaver Blades",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Frenzied Devotion",
+          "timing": "End of Any Turn",
+          "effect": "If this unit is within 8\" of your general, you can return D3 slain models to this unit.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "mighty_skullcrushers",
+      "name": "Mighty Skullcrushers",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "8\"",
+        "health": 5,
+        "save": "2+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Bloodglaive",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Juggernaut’s Brazen Hooves",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Brass Stampede",
+          "timing": "Your Charge Phase",
+          "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target, then roll a dice. On a 2+, inflict 1 mortal damage on the target.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY"
+      ]
+    }
+  ]
+}

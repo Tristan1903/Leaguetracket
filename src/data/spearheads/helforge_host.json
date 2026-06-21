@@ -1,0 +1,275 @@
+{
+  "id": "helforge_host",
+  "faction": "Helsmiths of Hashut",
+  "spearheadName": "Helforge Host",
+  "battleTraits": [
+    {
+      "name": "Harness Daemonic Power",
+      "timing": "Once Per Turn (Army), Your Hero Phase",
+      "effect": "You must use this ability at the start of each of your hero phases. Remove all daemonic power points from each friendly unit. Then, gain a number of daemonic power points equal to the current battle round number plus 1. Then, allocate your daemonic power points to friendly units. Each unit can have a maximum of 3 daemonic power points. Then, all unallocated daemonic power points are lost.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Scroll of Petrification",
+      "timing": "Once Per Battle, Any Hero Phase",
+      "effect": "For the rest of the turn, your general has WARD (2+) but cannot use abilities or be picked to be the target of friendly abilities.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Chalice of Darkness",
+      "timing": "Once Per Battle, Your Shooting Phase",
+      "declare": "Pick a visible enemy unit within 12\" of your general to be the target.",
+      "effect": "Inflict D3 mortal damage on the target.",
+      "phases": [
+        "Shooting"
+      ]
+    },
+    {
+      "name": "Talisman of Obsidian",
+      "timing": "Passive",
+      "effect": "Ignore the first damage point allocated to your general in each phase.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Amulet of Burning Hate",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "For the rest of the turn, your general’s attacks score critical hits on unmodified hit rolls of 5+.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Grinding Advance",
+      "timing": "Once Per Battle, Deployment Phase",
+      "declare": "Pick up to 2 friendly Infernal Cohort units to be the targets.",
+      "effect": "Each target can immediately move up to 3\" but cannot use CHARGE abilities in the first battle round.",
+      "phases": [
+        "Deployment"
+      ]
+    },
+    {
+      "name": "Suppressive Bombardment",
+      "timing": "Once Per Turn, Your Shooting Phase",
+      "declare": "Pick an enemy INFANTRY unit that had any damage points allocated to it this turn as a result of shooting attacks made by a friendly Tormentor Bombard to be the target.",
+      "effect": "Until the start of your next turn, subtract 1 from the number of dice rolled when making charge rolls for the target, to a minimum of 1.",
+      "phases": [
+        "Shooting"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "war_despot",
+      "name": "War Despot",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "4\"",
+        "health": 6,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Daemonflame Glaive",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Black-hearted Conqueror",
+          "timing": "Passive",
+          "effect": "While this unit has any daemonic power points, friendly units with 0 daemonic power points count as having 1 daemonic power point while they are wholly within 6\" of and visible to this unit. For each daemonic power point this unit has, add 3\" to the range of this ability.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "dominator_engine",
+      "name": "Dominator Engine",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 10,
+        "save": "2+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Immolation Cannons",
+          "type": "Ranged",
+          "range": "8\"",
+          "attacks": 5,
+          "hit": "2+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Horns and Pummelling Strikes",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Daemonic Strength",
+          "timing": "Passive",
+          "effect": "For each daemonic power point this unit has:\n- Add 1\" to its Move characteristic.\n- Add 1 to the Attacks characteristic of its weapons.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "tormentor_bombard",
+      "name": "Tormentor Bombard",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "4\"",
+        "health": 8,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Torrent of Ruinous Energy",
+          "type": "Ranged",
+          "range": "30\"",
+          "attacks": 4,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Anti-Cavalry (+1 Rend)",
+            "Anti-Infantry (+1 Rend)"
+          ]
+        },
+        {
+          "name": "Artillerist Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Calculated Trajectory",
+          "timing": "Passive",
+          "effect": "Add 1 to hit rolls for this unit’s shooting attacks that target an enemy unit with 5 or more models that is more than 12\" from this unit.",
+          "phases": [
+            "Shooting"
+          ]
+        },
+        {
+          "name": "Ruinous Bombardment",
+          "timing": "Once Per Turn (Army), Your Shooting Phase",
+          "declare": "If this unit used a SHOOT ability this turn and all of its attacks targeted the same enemy unit, that enemy unit is the target. Then, you can pick a number of enemy units within 6\" of the target equal to the number of daemonic power points this unit has to be additional targets.",
+          "effect": "Roll a dice for each target. On a 3+, subtract 3 from the target’s control score for the rest of the turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE"
+      ]
+    },
+    {
+      "id": "infernal_cohort",
+      "name": "Infernal Cohort",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "4\"",
+        "health": 1,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Hashutite Spear",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Anti-charge (+1 Rend)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Strike the Gongs",
+          "timing": "Once Per Battle, Any Hero Phase",
+          "effect": "This unit's Gong Carrier (if any) is a token. You can remove its Gong Carrier from the battlefield and return D3 slain models to this unit.",
+          "phases": [
+            "Hero"
+          ]
+        },
+        {
+          "name": "Daemonic Resilience",
+          "timing": "Passive",
+          "effect": "Apply the effect below that corresponds with the number of daemonic power points (DPP) this unit has:\n- 1 DPP: This unit has WARD (6+).\n- 2 DPP: This unit has WARD (5+).\n- 3 DPP: This unit has WARD (5+) and you ignore the first damage point allocated to this unit in each phase.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

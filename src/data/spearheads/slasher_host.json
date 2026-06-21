@@ -1,0 +1,251 @@
+{
+  "id": "slasher_host",
+  "faction": "Nighthaunt",
+  "spearheadName": "Slasher Host",
+  "battleTraits": [
+    {
+      "name": "Wave of Terror",
+      "timing": "Any Charge Phase",
+      "declare": "Pick a friendly unit to use this ability if it charged this phase and the charge roll was 10+. Then, pick an enemy unit within 1\" of it to be the target.",
+      "effect": "The target has STRIKE-LAST this turn.",
+      "phases": [
+        "Charge"
+      ]
+    },
+    {
+      "name": "Ethereal",
+      "timing": "Passive",
+      "effect": "Ignore all modifiers to save rolls for friendly units (positive and negative).",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Soulfire Ring",
+      "timing": "End of Any Turn",
+      "effect": "If any models were slain by your general this turn, Heal (D6) your general.",
+      "phases": [
+        "End of Turn"
+      ]
+    },
+    {
+      "name": "Cloaked in Shadow",
+      "timing": "Passive",
+      "effect": "No more than 1 enemy unit can target your general with attacks (shooting or combat) per phase.",
+      "phases": [
+        "Shooting",
+        "Combat"
+      ]
+    },
+    {
+      "name": "Beacon of Nagashizzar",
+      "timing": "Once Per Battle, Your Hero Phase",
+      "effect": "Return 1 slain model to each friendly unit on the battlefield.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Shadow's Edge",
+      "timing": "Passive",
+      "effect": "Your general's Sword of Stolen Hours has Crit (Mortal).",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Death Stalkers",
+      "timing": "Start of the First Battle Round",
+      "declare": "Pick an enemy unit on the battlefield.",
+      "effect": "Add 1 to the Rend characteristic of melee weapons used for attacks that target that unit.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Chorus of Terror",
+      "timing": "Passive",
+      "effect": "Subtract 1 from hit rolls for combat attacks that target a friendly unit that charged in the same turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "knight_of_shrouds",
+      "name": "Knight of Shrouds",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "8\"",
+        "health": 5,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Sword of Stolen Hours",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Discorporate",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly unit wholly within 9\" of this unit to be the target.",
+          "effect": "Until the start of your next turn, the target has Ward (5+).",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "FLY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "spirit_hosts",
+      "name": "Spirit Hosts",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "8\"",
+        "health": 3,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Spectral Claws and Daggers",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 6,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Drawn to War",
+          "timing": "Passive",
+          "effect": "Your general has Ward (4+) while they are within 1\" of this unit.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "grimghast_reapers",
+      "name": "Grimghast Reapers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "8\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Slasher Scythe",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Reaped Like Corn",
+          "timing": "Passive",
+          "effect": "Combat attacks made by this unit score critical hits on unmodified hit rolls of 5+ if the target unit has 5 or more models.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "chainrasps",
+      "name": "Chainrasps",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "8\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Malignant Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Chilling Horde",
+          "timing": "Passive",
+          "effect": "Add 1 to wound rolls for combat attacks made by this unit if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "REINFORCEMENTS",
+        "WARD (6+)"
+      ]
+    }
+  ]
+}

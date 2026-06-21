@@ -1,0 +1,202 @@
+{
+  "id": "saga_axeband",
+  "faction": "Fyreslayers",
+  "spearheadName": "Saga Axeband",
+  "battleTraits": [
+    {
+      "name": "Awaken the Runes",
+      "timing": "Once Per Battle Round, Start of Your Turn",
+      "declare": "Pick 1 of the ur-gold runes, then make an activation roll of D6. Each ur-gold rune can only be activated once per battle.",
+      "effect": "On a 1-5, the rune's standard effect applies. On a 6, the rune's enhanced effect applies as well. The effects last until the start of your next turn:\n- RUNE OF FURY:\n  - Standard: Add 1 to hit rolls for combat attacks made by friendly units.\n  - Enhanced: In addition, add 1 to the Attacks characteristic of your units' melee weapons.\n- RUNE OF SEARING HEAT:\n  - Standard: Add 1 to the Rend characteristic of your units' melee weapons.\n  - Enhanced: In addition, add 1 to the Damage characteristic of your units' melee weapons.\n- RUNE OF FIERY DETERMINATION:\n  - Standard: Your units have WARD (5+).\n  - Enhanced: In addition, add 1 to save rolls for friendly units.\n- RUNE OF RELENTLESS ZEAL:\n  - Standard: Add 2\" to the Move characteristic of your units.\n  - Enhanced: In addition, add 2 to charge rolls for your units.",
+      "phases": [
+        "Start of Turn"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Too Stubborn to Die",
+      "timing": "Start of Any Turn",
+      "effect": "Heal (D3) your general.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Spirit of Grimnir",
+      "timing": "Passive",
+      "effect": "You can re-roll activation rolls you make for the 'Ur-gold Runes' (Awaken the Runes) ability.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Horn of Grimnir",
+      "timing": "Your Hero Phase",
+      "declare": "Pick your general to use this ability if they are not in combat.",
+      "effect": "Roll a dice for each friendly unit on the battlefield that has any slain models. On a 3+, you can return 1 slain model to that unit.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Powerful Presence",
+      "timing": "Passive",
+      "effect": "Add 3 to your general's control score.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Magmic Tunnels",
+      "timing": "Once Per Battle, Start of the First Battle Round",
+      "effect": "Pick up to 2 friendly units. Remove them from the battlefield and set them up again anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Fyresteel Throwing Axes",
+      "timing": "Once Per Turn (Army), Your Shooting Phase",
+      "declare": "Pick any number of friendly units that are not in combat and are within 10\" of any enemy units.",
+      "effect": "For each of those units, pick a visible enemy unit within 10\" of it and roll a dice. On a 4+, inflict D3 mortal damage on that enemy unit.",
+      "phases": [
+        "Shooting"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "battlesmith",
+      "name": "Battlesmith",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "4\"",
+        "health": 5,
+        "save": "5+",
+        "control": 5
+      },
+      "weapons": [
+        {
+          "name": "Ancestral Battle-axe",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Icon of Grimnir",
+          "timing": "Passive",
+          "effect": "Add 1 to save rolls for friendly units while they are wholly within 12\" of this unit.",
+          "phases": [
+            "Any"
+          ]
+        },
+        {
+          "name": "Plant the Icon",
+          "timing": "Once Per Battle, Any Hero Phase",
+          "effect": "For the rest of the turn, friendly units have WARD (5+) while they are wholly within 12\" of this unit.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "hearthguard_berzerkers",
+      "name": "Hearthguard Berzerkers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "4\"",
+        "health": 2,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Flamestrike Poleaxe",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Duty Unto Death",
+          "timing": "Passive",
+          "effect": "While your general is wholly within this unit’s combat range, both this unit and your general have WARD (5+).",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "vulkite_berzerkers",
+      "name": "Vulkite Berzerkers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "4\"",
+        "health": 2,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Fyresteel Handaxes",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Anti-charge (+1 Rend)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Whirlwind of Destruction",
+          "timing": "Passive",
+          "effect": "Add 1 to the Attacks characteristic of this unit’s melee weapons if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    }
+  ]
+}

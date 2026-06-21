@@ -1,0 +1,301 @@
+{
+  "id": "glittering_phalanx",
+  "faction": "Lumineth Realm-lords",
+  "spearheadName": "Glittering Phalanx",
+  "battleTraits": [
+    {
+      "name": "Facets of War",
+      "timing": "Once Per Battle Round, Start of Battle Round",
+      "effect": "You must use this ability at the start of the battle round. Pick 1 FACET OF WAR ability. That FACET OF WAR ability can be used this battle round but the other cannot.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Shining Company",
+      "timing": "Passive",
+      "effect": "Subtract 1 from hit rolls for attacks that target friendly units.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Power of Hysh",
+      "timing": "Once Per Turn (Army), Your Hero Phase",
+      "declare": "Pick a friendly unit.",
+      "effect": "Roll a dice. On a 2+, until the start of your next turn, attacks made by that unit score critical hits on unmodified hit rolls of 5+.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Lightning Reactions",
+      "timing": "Passive",
+      "effect": "When players are alternating picking units to use a FIGHT ability, when it is your turn to pick a unit, you can pick 2 units instead of 1. Resolve the second FIGHT ability immediately after the first.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Overwhelming Heat",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible enemy unit within 24\" of your general, then make a casting roll of 2D6.",
+      "effect": "On a 7+, halve the Move characteristic of that unit until the start of your next turn and roll a dice. If the roll equals or exceeds that unit’s Save characteristic, inflict D3 mortal damage on it.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Protection of Hysh",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible friendly unit wholly within 12\" of your general to be the target, then make a casting roll of 2D6.",
+      "effect": "On a 7+, the target has WARD (5+) until the start of your next turn.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Waystone",
+      "timing": "Your Movement Phase",
+      "effect": "Remove your general from the battlefield and set them up again anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Speed of Hysh",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible friendly unit wholly within 18\" of your general, then make a casting roll of 2D6.",
+      "effect": "On a 5+, double the Move characteristic of that unit until the start of your next turn.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Arcane Prowess",
+      "timing": "Passive",
+      "effect": "Add 1 to casting rolls for your general.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Heightened Reflexes",
+      "timing": "Passive",
+      "effect": "Add 1 to save rolls for friendly units that use a FIGHT ability immediately after another friendly unit because of the ‘Lightning Reactions’ ability, until the end of the phase.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "scinari_cathallar",
+      "name": "Scinari Cathallar",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 5,
+        "save": "6+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Despairing Touch",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Darkness of the Soul",
+          "timing": "Your Hero Phase",
+          "declare": "Pick an enemy unit within 12\" of this unit to be the target, then roll a dice.",
+          "effect": "On a 3+, subtract D6 from the control score of the target unit this turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "WIZARD",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "vanari_bladelords",
+      "name": "Vanari Bladelords",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 2,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Sunmetal Greatblade: Perfect Strike",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "See below",
+          "wound": "See below",
+          "rend": 0,
+          "damage": "See below",
+          "keywords": []
+        },
+        {
+          "name": "Sunmetal Greatblade: Flurry of Blows",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Mortal)",
+            "Anti-Infantry (+1 Rend)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Swordmasters",
+          "timing": "Passive",
+          "effect": "Each time this unit uses a FIGHT ability, you must pick either the Perfect Strike or Flurry of Blows weapon characteristics for all the attacks it makes with its Sunmetal Greatblade. In addition, do not use the attack sequence for an attack made with Perfect Strike. Instead, roll a dice. On a 2+, inflict 1 mortal damage on the target unit.",
+          "phases": [
+            "Combat"
+          ]
+        },
+        {
+          "name": "Guardians",
+          "timing": "Passive",
+          "effect": "While your general is wholly within this unit’s combat range, both this unit and your general have WARD (5+).",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "vanari_auralan_sentinels",
+      "name": "Vanari Auralan Sentinels",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Auralan Bow",
+          "type": "Ranged",
+          "range": "18\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        },
+        {
+          "name": "Vanari Dagger",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Lofted Shots",
+          "timing": "Your Shooting Phase",
+          "effect": "Until the end of the phase, add 6\" to the Range characteristic of this unit’s Auralan Bows but subtract 1 from hit rolls for this unit’s shooting attacks.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "vanari_auralan_wardens",
+      "name": "Vanari Auralan Wardens",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Warden Pike and Blade",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Anti-charge (+1 Rend)",
+            "Crit (Mortal)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Wall of Blades",
+          "timing": "Any Combat Phase",
+          "effect": "If this unit did not charge this turn and is in combat with an enemy unit that charged this turn, roll a dice. Add 1 to the roll if that enemy unit is CAVALRY. On a 3+, this unit has STRIKE-FIRST for the rest of the turn.",
+          "phases": [
+            "Combat"
+          ]
+        },
+        {
+          "name": "Moonfire Flask",
+          "timing": "Once Per Battle, Any Combat Phase",
+          "declare": "Pick an enemy unit in combat with this unit and that charged this turn to be the target, then roll a dice.",
+          "effect": "On a 2+, inflict D3 mortal damage on the target.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

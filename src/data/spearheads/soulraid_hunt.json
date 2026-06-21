@@ -1,0 +1,286 @@
+{
+  "id": "soulraid_hunt",
+  "faction": "Idoneth Deepkin",
+  "spearheadName": "Soulraid Hunt",
+  "battleTraits": [
+    {
+      "name": "Tides of Death",
+      "timing": "Start of Battle Round",
+      "effect": "In each battle round, all friendly units have the Tides of Death passive ability that corresponds to the current battle round number:\n- Round 1 - LOW TIDE: Subtract 1 from hit rolls for shooting attacks that target this unit.\n- Round 2 - FLOOD TIDE: This unit can use a RUN ability and still use SHOOT and/or CHARGE abilities later in the turn.\n- Round 3 - HIGH TIDE: This unit has STRIKE-FIRST.\n- Round 4 - EBB TIDE: This unit can use a RETREAT ability and still use SHOOT and/or CHARGE abilities later in the turn.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Arch-Ritualist",
+      "timing": "Passive",
+      "effect": "Add 1 to rolls for your general’s ‘Ritual of the Creeping Mist’ ability.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Steelshell Armour",
+      "timing": "Passive",
+      "effect": "Ignore all modifiers to save rolls for your general (positive and negative).",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Mind Flare",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "declare": "Pick an enemy unit in combat with your general.",
+      "effect": "Until the end of the phase, attacks made by that unit only score hits on unmodified hit rolls of 6.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Delicious Morsels",
+      "timing": "Your Hero Phase",
+      "effect": "Heal (1) each friendly CAVALRY unit within your general’s combat range.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Way of the Cresting Wave",
+      "timing": "Passive",
+      "effect": "Add 1 to the Rend characteristic of melee weapons used by friendly Namarti Thralls units that charged in the same turn.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Ethersea Predators",
+      "timing": "Once Per Turn (Army), End of Any Turn",
+      "effect": "Pick a friendly CAVALRY unit that used a FIGHT ability this turn. Heal (D3) that unit.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "soulscryer",
+      "name": "Isharann Soulscryer",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 5,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Scryfish Shoal",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 8,
+          "hit": "5+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Shoot in Combat",
+            "Companion"
+          ]
+        },
+        {
+          "name": "Abyssal Touch",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Ritual of the Creeping Mist",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a visible friendly unit wholly within 12\" of this unit to be the target, then roll a dice.",
+          "effect": "On a 3+, until the start of your next turn, subtract 1 from wound rolls for attacks that target that unit.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "morrsarr_guard",
+      "name": "Akhelian Morrsarr Guard",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "14\"",
+        "health": 4,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Voltspear",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Fangmora’s Fangs and Lashing Tail",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Biovoltaic Blast",
+          "timing": "Once Per Battle, Any Charge Phase",
+          "declare": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target, then roll a number of dice equal to the number of models in this unit.",
+          "effect": "For each 4-5, inflict 1 mortal damage on the target. For each 6+, inflict D3 mortal damage on the target. Add 1 to each roll if there are more models in the target unit than this unit.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "allopex",
+      "name": "Akhelian Allopex",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "12\"",
+        "health": 8,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Razorshell Harpoon Launcher",
+          "type": "Ranged",
+          "range": "18\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 3,
+          "keywords": [
+            "Anti-Monster (+1 Rend)"
+          ]
+        },
+        {
+          "name": "Barbed Hooks and Blades",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Allopex's Ferocious Bite",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bloodthirsty Predators",
+          "timing": "Passive",
+          "effect": "Add 1 to the Attacks characteristic of this unit’s Allopex’s Ferocious Bite if it is within 6\" of any damaged enemy units or if it is within 6\" of any enemy units that have had any models slain in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "namarti_thralls",
+      "name": "Namarti Thralls",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Lanmari",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Anti-Infantry (+1 Rend)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Sweeping Blows",
+          "timing": "Passive",
+          "effect": "Add 1 to the Damage characteristic of this unit’s Lanmari for attacks that target an enemy MONSTER.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

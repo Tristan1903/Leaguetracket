@@ -1,0 +1,346 @@
+{
+  "id": "tyrants_bellow",
+  "faction": "Ogor Mawtribes",
+  "spearheadName": "Tyrant's Bellow",
+  "battleTraits": [
+    {
+      "name": "On the Mawpath",
+      "timing": "Passive",
+      "effect": "Your Ironblaster, Mournfang Pack and 1 unit of Ogor Gluttons are not set up during the deployment phase. Instead, from the third battle round onwards, you can use the ‘Bellowing Arrival’ ability.",
+      "phases": [
+        "Deployment"
+      ]
+    },
+    {
+      "name": "Bellowing Arrival",
+      "timing": "Your Movement Phase",
+      "effect": "Set up this unit anywhere on the battlefield, within 1\" of a battlefield edge and more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Longstrider",
+      "timing": "Passive",
+      "effect": "Your general has a Move characteristic of 8\" instead of 6\".",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Flask of Stonehorn Blood",
+      "timing": "Once Per Battle, Reaction: Opponent declared an Attack ability and targeted your general",
+      "effect": "Your general has WARD (3+) this phase.",
+      "phases": [
+        "Combat",
+        "Shooting"
+      ]
+    },
+    {
+      "name": "Booming Roar",
+      "timing": "Any Combat Phase",
+      "effect": "Roll a dice. On a 4+, subtract 1 from hit rolls for attacks made by enemy units this phase while they are within 9\" of your general.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Blubbergrub",
+      "timing": "Once Per Battle, Any Movement Phase",
+      "declare": "Pick either your Ironblaster or your Mournfang Pack unit if it is within your general’s combat range.",
+      "effect": "Heal (D6) that unit.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Pulverising Girth",
+      "timing": "Once Per Phase, Any Charge Phase",
+      "declare": "Pick any number of friendly units that charged this phase.",
+      "effect": "For each of those units, pick an enemy unit in combat with it and roll a dice. On a 4+, inflict 1 mortal damage on that enemy unit.",
+      "phases": [
+        "Charge"
+      ]
+    },
+    {
+      "name": "Bred for Toughness",
+      "timing": "Passive",
+      "effect": "Add 1 to the Health characteristic of your Ironblaster and your Mournfang Pack unit.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "tyrant",
+      "name": "Tyrant",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 8,
+        "save": "4+",
+        "control": 5
+      },
+      "weapons": [
+        {
+          "name": "Ogor Pistols",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Thundermace",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": 3,
+          "keywords": []
+        },
+        {
+          "name": "Beastskewer Glaive",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Anti-Monster (+1 Rend)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bully of the First Degree",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly unit wholly within 12\" of this unit to be the target. You cannot pick this unit.",
+          "effect": "Add 3 to the control score of the target until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "ironblaster",
+      "name": "Ironblaster",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "9\"",
+        "health": 9,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Ironblaster Cannon",
+          "type": "Ranged",
+          "range": "18\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": "D3+3",
+          "keywords": []
+        },
+        {
+          "name": "Clubber",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 0,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Rhino's Sharp Horns",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Rhinox Charge",
+          "timing": "Passive",
+          "effect": "The Damage characteristic of this unit’s Rhinox’s Sharp Horns is 3 if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE"
+      ]
+    },
+    {
+      "id": "leadbelchers",
+      "name": "Leadbelchers",
+      "isGeneral": false,
+      "models": 4,
+      "stats": {
+        "movement": "6\"",
+        "health": 4,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Leadbelcher Gun",
+          "type": "Ranged",
+          "range": "15\"",
+          "attacks": "D3",
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Bludgeoning Blow",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 0,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Firing from the Belly",
+          "timing": "Passive",
+          "effect": "Add 1 to hit rolls for this unit’s shooting attacks if it has not used a MOVE ability this turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "ogor_gluttons",
+      "name": "Ogor Gluttons",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "6\"",
+        "health": 4,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Ogor Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Driven by Hunger",
+          "timing": "Passive",
+          "effect": "Add 1 to charge rolls for this unit.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "mournfang_pack",
+      "name": "Mournfang Pack",
+      "isGeneral": false,
+      "models": 2,
+      "stats": {
+        "movement": "9\"",
+        "health": 6,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Culling Clubs and Hackers",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Mournfang’s Tusks",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Linebreakers",
+          "timing": "Passive",
+          "effect": "Subtract 1 from wound rolls for shooting attacks that target this unit.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY"
+      ]
+    }
+  ]
+}

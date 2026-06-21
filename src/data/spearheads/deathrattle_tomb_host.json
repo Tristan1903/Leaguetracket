@@ -1,0 +1,250 @@
+{
+  "id": "deathrattle_tomb_host",
+  "faction": "Soulblight Gravelords",
+  "spearheadName": "Deathrattle Tomb Host",
+  "battleTraits": [
+    {
+      "name": "The Unquiet Dead",
+      "timing": "Your Movement Phase",
+      "effect": "One of your Deathrattle Skeletons units is not set up during deployment. From the third battle round onwards, you can set it up wholly within 3\" of a battlefield edge and more than 6\" from enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Aura of Antiquity",
+      "timing": "Once Per Turn (Army), Your Combat Phase",
+      "effect": "Pick an enemy unit in combat with any friendly units. Roll a dice; on a 3+, subtract 1 from the Rend characteristic of the target's melee weapons until the start of your next turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Shyishan Blade",
+      "timing": "Passive",
+      "effect": "The Rend characteristic of the general's Baleful Tomb Blade is 2.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Stolen Animus",
+      "timing": "Passive",
+      "effect": "Each time your general scores a critical hit, Heal (2) your general after the Attack ability has been resolved.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Propelled by Hate",
+      "timing": "Your Charge Phase",
+      "effect": "Pick another friendly unit wholly within 12\" of your general. You can re-roll charge rolls for that target for the rest of the turn.",
+      "phases": [
+        "Charge"
+      ]
+    },
+    {
+      "name": "Soul-Drain Pendant",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "Pick an enemy unit in combat with your general and roll a dice. On a 2+, the target has STRIKE-LAST for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Overwhelming Hordes",
+      "timing": "Passive",
+      "effect": "Add 1 to wound rolls for combat attacks made by friendly non-HERO units that target a unit that has fewer models than the attacking unit.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Deathmarch",
+      "timing": "Once Per Turn (Army), Your Hero Phase",
+      "effect": "Pick a friendly non-HERO unit that is not in combat. For the rest of the turn, add 1\" to the target's Move characteristic and add 3 to its control score.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "wight_king",
+      "name": "Wight King",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "4\"",
+        "health": 5,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Baleful Tomb Blade",
+          "type": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "King of Shambling Bones",
+          "timing": "Your Hero Phase",
+          "effect": "Pick a friendly Deathrattle unit wholly within 12\" of this unit. Roll a dice; on a 2+, add 1 to hit rolls for combat attacks made by the target for the rest of the turn.",
+          "phases": [
+            "Hero",
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "barrow_guard",
+      "name": "Barrow Guard",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "4\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Wight Blade",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Guardians of the King",
+          "timing": "Passive",
+          "effect": "While your general is within this unit's combat range, both this unit and your general have WARD (5+).",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "barrow_knights",
+      "name": "Barrow Knights",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "10\"",
+        "health": 3,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Barrow Lance",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Mortal)",
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Skeletal Steed's Hooves and Teeth",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Cursed to Rise Once More",
+          "timing": "End of Your Turn",
+          "effect": "You can return 1 slain model to this unit.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "deathrattle_skeletons_tomb",
+      "name": "Deathrattle Skeletons (Tomb Host)",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "4\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Ancient Weapon",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Skeleton Legion (Tomb Host)",
+          "timing": "End of Any Turn",
+          "effect": "You can return D3 slain models to this unit.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    }
+  ]
+}

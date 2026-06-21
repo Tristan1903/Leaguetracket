@@ -1,0 +1,351 @@
+{
+  "id": "castelite_company",
+  "faction": "Cities of Sigmar",
+  "spearheadName": "Castelite Company",
+  "battleTraits": [
+    {
+      "name": "The Officar's Order",
+      "timing": "Once Per Battle Round, Start of Battle Round",
+      "declare": "Pick a battle tactic card in your hand and place it face-down separately next to your other battle tactic cards.",
+      "effect": "When you use the command on that card, it is not discarded but returns to your hand. Your opponent can check the information on it before it returns to your hand. If you did not use the command, you can still score the battle tactic. If you neither used the command nor scored the battle tactic, it automatically returns to your hand at the end of your turn.",
+      "phases": [
+        "Start of Turn",
+        "End of Turn"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Flask of Lethisian Darkwater",
+      "timing": "Once Per Battle, Start of Any Turn",
+      "effect": "Heal (D6) your general.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Heirloom Blade",
+      "timing": "Passive",
+      "effect": "Add 1 to the Rend characteristic of your general's Master-forged Longsword.",
+      "phases": [
+        "Any"
+      ],
+      "modifiers": [
+        {
+          "target": "weapon",
+          "targetName": "Master-forged Longsword",
+          "property": "rend",
+          "value": "+1"
+        }
+      ]
+    },
+    {
+      "name": "Brazier of Holy Flame",
+      "timing": "End of Any Turn",
+      "declare": "Pick a friendly Freeguild Steelhelms unit within your general's combat range.",
+      "effect": "You can return up to D3 slain models to that unit.",
+      "phases": [
+        "End of Turn"
+      ]
+    },
+    {
+      "name": "Glimmering",
+      "timing": "Passive",
+      "effect": "Each phase, you can re-roll 1 hit roll, or 1 wound roll, or 1 save roll made for your general.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "For Sigmar, Charge!",
+      "timing": "Passive",
+      "effect": "Friendly Cavalry units have STRIKE-FIRST if they charged in the same turn.",
+      "phases": [
+        "Combat"
+      ],
+      "modifiers": [
+        {
+          "target": "keyword",
+          "property": "keywords",
+          "value": "STRIKE-FIRST",
+          "condition": "Charged in the same turn"
+        }
+      ]
+    },
+    {
+      "name": "Ironweld Discipline",
+      "timing": "Once Per Turn, Enemy Shooting Phase",
+      "declare": "Pick your Ironweld Great Cannon to use this ability.",
+      "effect": "Roll a dice. On a 3+, it can use the 'Shoot' ability as if it were your shooting phase.",
+      "phases": [
+        "Enemy Shooting"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "freeguild_cavalier_marshal",
+      "name": "Freeguild Cavalier-Marshal",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "10\"",
+        "health": 7,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Dragoon Pistol",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Master-forged Longsword",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Warhorse's Steel-shod Hooves",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Decisive Commander",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly Freeguild Steelhelms unit wholly within 12\" of this unit to be the target and roll a dice.",
+          "effect": "On a 2+, pick 1:\n- On Your Feet!: If the target unit is not in combat, you can return D3 slain models to it.\n- Yield No Quarter!: Add 3 to the target unit's control score until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "CAVALRY"
+      ]
+    },
+    {
+      "id": "freeguild_steelhelms_1",
+      "name": "Freeguild Steelhelms",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Freeguild Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Consecrate the Land",
+          "timing": "Your Movement Phase",
+          "declare": "If this unit is contesting an objective you control that is not contested by any enemy models, roll a dice.",
+          "effect": "On a 3+, that objective is considered by you to be consecrated. Friendly units have WARD (6+) while they are contesting a consecrated objective. If your opponent gains control of a consecrated objective, it is no longer consecrated.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "freeguild_steelhelms_2",
+      "name": "Freeguild Steelhelms",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Freeguild Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Consecrate the Land",
+          "timing": "Your Movement Phase",
+          "declare": "If this unit is contesting an objective you control that is not contested by any enemy models, roll a dice.",
+          "effect": "On a 3+, that objective is considered by you to be consecrated. Friendly units have WARD (6+) while they are contesting a consecrated objective. If your opponent gains control of a consecrated objective, it is no longer consecrated.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "freeguild_cavaliers",
+      "name": "Freeguild Cavaliers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "10\"",
+        "health": 3,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Cavalier Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Warhorse's Steel-shod Hooves",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Devastating Charge",
+          "timing": "Any Charge Phase",
+          "declare": "If this unit charged this phase, pick an enemy unit in combat with it to be the target and roll a dice.",
+          "effect": "On a 2+, inflict D3 mortal damage on the target.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "ironweld_great_cannon",
+      "name": "Ironweld Great Cannon",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "3\"",
+        "health": 8,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Great Cannon: Cannonball",
+          "type": "Ranged",
+          "range": "24\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": "D3+2",
+          "keywords": []
+        },
+        {
+          "name": "Great Cannon: Grapeshot",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Crew's Tools and Sidearms",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Shot and Shell",
+          "timing": "Passive",
+          "effect": "Each time this unit uses a SHOOT ability, choose either the Cannonball or Grapeshot weapon characteristics for all the attacks it makes with its Great Cannon. The Cannonball can only be chosen if this unit has not used a MOVE ability that turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

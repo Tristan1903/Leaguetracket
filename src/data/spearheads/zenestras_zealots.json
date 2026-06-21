@@ -1,0 +1,337 @@
+{
+  "id": "zenestras_zealots",
+  "faction": "Cities of Sigmar",
+  "spearheadName": "Zenestra's Zealots",
+  "battleTraits": [
+    {
+      "name": "Shadowy Spymaster",
+      "timing": "Passive",
+      "effect": "Your Whisperblade is not set up during the deployment phase. Instead, from the second battle round onwards, it can use the following ability:\n- Sudden Ambush (Your Movement Phase): Set up this unit within 6\" of an enemy unit and not in combat.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Lady of the Wheel",
+      "timing": "Passive",
+      "effect": "Each time a friendly model is slain by a combat attack, roll a number of dice equal to that model's Health characteristic. For each 5+, inflict 1 mortal damage on the attacking unit after the FIGHT ability has been resolved.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Devout Commander",
+      "timing": "Passive",
+      "effect": "Add 1 to the Attacks characteristic and the Rend characteristic of your general's Master-forged Weapon.",
+      "phases": [
+        "Combat"
+      ],
+      "modifiers": [
+        {
+          "target": "weapon",
+          "targetName": "Master-forged Weapon",
+          "property": "attacks",
+          "value": "+1"
+        },
+        {
+          "target": "weapon",
+          "targetName": "Master-forged Weapon",
+          "property": "rend",
+          "value": "+1"
+        }
+      ]
+    },
+    {
+      "name": "Step to It!",
+      "timing": "Once Per Turn, Reaction",
+      "declare": "Reaction: You declared a RUN ability for a non-HERO unit wholly within 12\" of your general.",
+      "effect": "Do not make a run roll as part of that RUN ability. Instead, add 6\" to that non-HERO unit's Move characteristic to determine the distance each model in that unit can move as part of that RUN ability.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Stand Fast, Comrades",
+      "timing": "Once Per Battle, Your Hero Phase",
+      "declare": "Pick a visible friendly non-HERO unit wholly within 12\" of your general to be the target.",
+      "effect": "The target has WARD (4+) until the start of the next battle round.",
+      "phases": [
+        "Hero",
+        "Any"
+      ]
+    },
+    {
+      "name": "Ardent Demand",
+      "timing": "Any Combat Phase",
+      "declare": "Pick a visible friendly non-HERO unit wholly within 12\" of your general to be the target.",
+      "effect": "Add 1 to hit rolls for the target's combat attacks for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ],
+      "modifiers": [
+        {
+          "target": "weapon",
+          "targetName": "All Melee",
+          "property": "hit",
+          "value": "+1"
+        }
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Fervent Rush",
+      "timing": "Once Per Turn (Army), Your Movement Phase",
+      "declare": "Pick a friendly unit to use this ability.",
+      "effect": "This unit can use CHARGE abilities this turn even if it used a RUN ability in the same turn.",
+      "phases": [
+        "Movement",
+        "Charge"
+      ]
+    },
+    {
+      "name": "Fierce Zealots",
+      "timing": "Passive",
+      "effect": "Add 3 to the control scores of friendly Freeguild Steelhelms units.",
+      "phases": [
+        "Any"
+      ],
+      "modifiers": [
+        {
+          "target": "stat",
+          "property": "control",
+          "value": "+3",
+          "condition": "Unit is Freeguild Steelhelms"
+        }
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "freeguild_marshal",
+      "name": "Freeguild Marshal and Relic Envoy",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 5,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Duelling Pistols",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 4,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Master-forged Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Marshal's Orders",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a visible friendly unit wholly within 12\" of this unit to be the target.",
+          "effect": "Remove this unit's Relic Envoy token from the battlefield, then give it to the target.",
+          "phases": [
+            "Hero"
+          ]
+        },
+        {
+          "name": "Relic Envoy",
+          "timing": "Passive",
+          "effect": "While a friendly unit other than this unit has the Relic Envoy token, add 1 to wound rolls for that unit’s combat attacks. If this unit is destroyed, remove the Relic Envoy token from the battlefield.",
+          "phases": [
+            "Combat",
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "pontifex_zenestra",
+      "name": "Pontifex Zenestra, Matriarch of the Great Wheel",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 9,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Sceptre of the Wheel",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Vessel of Sigmar",
+          "timing": "Your Hero Phase",
+          "declare": "Pick up to 3 visible friendly or enemy units to be the targets.",
+          "effect": "Roll a D3 for each target. On a 2+:\n- If it is a friendly target, it has WARD (5+) until the start of your next turn.\n- If it is an enemy target, inflict an amount of mortal damage on it equal to the roll.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "PRIEST",
+        "INFANTRY",
+        "WARD (4+)"
+      ]
+    },
+    {
+      "id": "whisperblade",
+      "name": "Freeguild Command Corps Whisperblade",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 3,
+        "save": "6+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Enchanted Rapier",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 2,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Forewarned is Forearmed",
+          "timing": "Passive",
+          "effect": "While it is your turn, this unit has STRIKE-FIRST.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "arch_knight",
+      "name": "Freeguild Command Corps Arch-Knight and Retinue",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Command Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Talented Champions",
+          "timing": "Once Per Turn, Reaction",
+          "declare": "Reaction: You used a command.",
+          "effect": "After that command has been resolved, return the card to your hand.",
+          "phases": [
+            "Movement",
+            "Combat",
+            "Shooting",
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "freeguild_steelhelms",
+      "name": "Freeguild Steelhelms",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Freeguild Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Fanatical Followers",
+          "timing": "Any Combat Phase",
+          "effect": "Return 1 slain model to this unit.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

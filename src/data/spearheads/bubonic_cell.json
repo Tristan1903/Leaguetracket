@@ -1,0 +1,249 @@
+{
+  "id": "bubonic_cell",
+  "faction": "Maggotkin of Nurgle",
+  "spearheadName": "Bubonic Cell",
+  "battleTraits": [
+    {
+      "name": "Cycle of Corruption",
+      "timing": "Start of Battle Round",
+      "effect": "If it is the first battle round, roll a dice to determine which Cycle ability can be used this battle round. If you roll a 5 or 6, roll again. If it is not the first battle round, the next Cycle ability in the sequence is used this battle round instead of any previous Cycle abilities:\n- 1. NUMBERLESS PESTS: Subtract 1 from hit rolls for attacks that target friendly units.\n- 2. PLAGUE OF MISERY: While enemy units are within 6\" of any friendly units, they cannot use abilities that heal or return slain models to a unit.\n- 3. BURGEONING FILTH: Subtract 3 from the control scores of enemy units while they are in combat with any friendly units.\n- 4. NAUSEOUS REVULSION: Subtract 1 from charge rolls for enemy units.",
+      "phases": [
+        "Start of Turn"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Unnatural Vitality",
+      "timing": "Passive",
+      "effect": "Your general has Ward (4+).",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Subcutaneous Suppuration",
+      "timing": "Passive",
+      "effect": "Subtract 1 from wound rolls for attacks that target your general.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Gaseous Emanation",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "declare": "Pick an enemy unit within your general’s combat range to be the target.",
+      "effect": "The target has Strike-last for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Overripe Death's Heads",
+      "timing": "Your Shooting Phase",
+      "declare": "If your general is not in combat, pick a visible enemy unit within 7\" of them to be the target.",
+      "effect": "Roll a dice. On a 4+, inflict 1 mortal damage on the target.",
+      "phases": [
+        "Shooting"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Corruption of the Land",
+      "timing": "Once Per Turn (Army), End of Your Turn",
+      "declare": "Pick a terrain feature, then roll a dice for each enemy unit within 3\" of that terrain feature.",
+      "effect": "On a 4+, inflict D3 mortal damage on that enemy unit.",
+      "phases": [
+        "End of Turn"
+      ]
+    },
+    {
+      "name": "Putrefied Ground",
+      "timing": "Once Per Battle, Enemy Hero Phase",
+      "effect": "For the rest of the turn, subtract 1 from the Move characteristic of enemy units, and subtract 1 from run rolls for enemy units.",
+      "phases": [
+        "Enemy Movement"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "rotbringer_sorcerer",
+      "name": "Rotbringer Sorcerer",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "4\"",
+        "health": 6,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Rotwood Staff",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Fleshy Abundance",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly unit wholly within 12\" of this unit to be the target, then make a casting roll of 2D6.",
+          "effect": "On a 6+, subtract 1 from wound rolls for attacks that target that friendly unit until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "WIZARD",
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "nurglings",
+      "name": "Nurglings",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "4\"",
+        "health": 4,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Tiny Razor-Sharp Teeth",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "5+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Endless Swarm",
+          "timing": "End of Any Turn",
+          "effect": "Heal (D3) this unit.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "BEAST",
+        "WARD (5+)"
+      ]
+    },
+    {
+      "id": "beast_of_nurgle",
+      "name": "Beast of Nurgle",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "7\"",
+        "health": 8,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Filthy Claws and Slobbering Maw",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Attention Seekers",
+          "timing": "Any Charge Phase",
+          "declare": "If this unit charged this phase, pick an enemy unit in combat with it to be the target.",
+          "effect": "Roll a D3. On a 2+, inflict an amount of mortal damage on the target equal to the roll.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "BEAST",
+        "WARD (5+)"
+      ]
+    },
+    {
+      "id": "rotmire_creed",
+      "name": "Rotmire Creed",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Contagion Blowpipes",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        },
+        {
+          "name": "Bilewood Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bilewood Stilts",
+          "timing": "Passive",
+          "effect": "No mortal damage is inflicted on this unit when it uses Retreat abilities.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    }
+  ]
+}

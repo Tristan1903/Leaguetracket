@@ -1,0 +1,253 @@
+{
+  "id": "sentinels_of_embergard",
+  "faction": "Cities of Sigmar",
+  "spearheadName": "Sentinels of Embergard",
+  "battleTraits": [
+    {
+      "name": "Ranger Doctrines",
+      "timing": "Once Per Turn (Army), Reaction",
+      "effect": "Reaction: You declared a FIGHT ability for your general or a friendly non-HERO unit wholly within 12\" of your general. Immediately after that FIGHT ability has been resolved, pick a point on the battlefield within 6\" of your general. Remove the unit using this ability from the battlefield and set it up again within 1\" of that point and not in combat.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Throwing Knives",
+      "timing": "Any Shooting Phase",
+      "declare": "Pick a visible enemy unit within 10\" of your general to be the target.",
+      "effect": "Roll a dice. On a 3+, inflict 1 mortal damage on the target.",
+      "phases": [
+        "Shooting"
+      ]
+    },
+    {
+      "name": "Trained Ranger",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "declare": "Pick a friendly unit wholly within 6\" of a battlefield edge to be the target.",
+      "effect": "Remove the target from the battlefield and set it up again wholly within 3\" of a battlefield edge and more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Hot-Blooded Endurance",
+      "timing": "Passive",
+      "effect": "Your general can use CHARGE abilities even if they used a RUN or RETREAT ability in the same turn and no mortal damage is inflicted on them by RETREAT abilities.",
+      "phases": [
+        "Movement",
+        "Charge"
+      ]
+    },
+    {
+      "name": "Blade of the Kraken",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "Double the Attacks characteristic of your general's melee weapons for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Close-Quarters Drill",
+      "timing": "Passive",
+      "effect": "Friendly units' ranged weapons have Shoot in Combat but you must subtract 1 from hit rolls for their shooting attacks while they are in combat.",
+      "phases": [
+        "Shooting",
+        "Combat"
+      ]
+    },
+    {
+      "name": "Come and Take It, Blaggards!",
+      "timing": "Passive",
+      "effect": "Add 5 to the control scores of friendly non-HERO units while they are in combat with any enemy units that have 6 or more models or a Health characteristic of 3 or more.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "jorvan_kreel",
+      "name": "Jorvan Kreel, Heir of the Kraken",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 5,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Ranger Blades",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 6,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Veteran Skirmishers",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly unit wholly within 12\" of this unit to be the target.",
+          "effect": "Roll a dice. On a 3+, for the rest of the turn, add 2\" to the target's Move characteristic but it cannot use RUN abilities.",
+          "phases": [
+            "Hero",
+            "Movement"
+          ]
+        },
+        {
+          "name": "Prowling Ash Panther",
+          "timing": "End of Any Turn",
+          "effect": "If this unit has the Thexa token, give that token to an enemy unit within 6\" of this unit. If an enemy unit has the Thexa token, inflict D3 mortal damage on that enemy unit. Then, give this unit the Thexa token.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "mallus_forgepriest",
+      "name": "Mallus Forgepriest",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 5,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Sigmarite Warhammer",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Consecrate the Land",
+          "timing": "Your Hero Phase",
+          "declare": "Pick an objective within 12\" of this unit, then make a chanting roll of D6.",
+          "effect": "On a 3+, for the rest of the turn, friendly units have WARD (5+) while they are contesting that objective.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "PRIEST",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "freeguild_gallants",
+      "name": "Freeguild Gallants",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Weapons of Gallantry",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Unbreachable Will",
+          "timing": "Any Combat Phase",
+          "declare": "If this unit has not charged this turn, pick an enemy unit in combat with it to be the target.",
+          "effect": "For the rest of the turn, subtract 1 from the Rend characteristic of the target's weapons for attacks that target this unit.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "freeguild_grenadiers",
+      "name": "Freeguild Grenadiers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Ruin-sweeper Arsenal",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Grenadier Bardiche",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Cinder and Ash",
+          "timing": "Once Per Turn (Army), End of Any Turn",
+          "declare": "Pick up to 1 terrain feature contested by this unit and up to 1 objective contested by this unit, then pick any enemy units also contesting them to be the targets.",
+          "effect": "Roll a dice for each target. On a 3+, inflict 1 mortal damage on the target.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

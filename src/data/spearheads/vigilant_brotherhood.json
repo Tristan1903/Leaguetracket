@@ -1,0 +1,307 @@
+{
+  "id": "vigilant_brotherhood",
+  "faction": "Stormcast Eternals",
+  "spearheadName": "Vigilant Brotherhood",
+  "battleTraits": [
+    {
+      "name": "Shield of Azyr",
+      "timing": "Once Per Turn, Your Hero Phase",
+      "effect": "Pick a friendly unit. Until the start of your next turn, that unit has WARD (5+).",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Storm Charge",
+      "timing": "Once Per Battle, Your Charge Phase",
+      "effect": "Pick a friendly unit that is not in combat. That unit can use CHARGE abilities this turn even if it used a RUN ability in the same turn.",
+      "phases": [
+        "Charge"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Hallowed Scrolls",
+      "timing": "Passive",
+      "effect": "Your general has WARD (5+).",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Morrda's Talon",
+      "timing": "Passive",
+      "effect": "Your general's Hallowed Greataxe has Crit (Mortal).",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Quicksilver Draught",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "Your general has STRIKE-FIRST this phase.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Null Pendant",
+      "timing": "Once Per Battle, End of Any Turn",
+      "effect": "Roll a dice for each enemy unit contesting the same objective as your general. On a 2+, subtract the roll from the control score of that enemy unit this turn.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Strike Where Needed",
+      "timing": "Once Per Battle, Reaction: You declared a RETREAT ability",
+      "effect": "No mortal damage is inflicted by that RETREAT. In addition, that unit can still use CHARGE abilities this turn even though it retreated.",
+      "phases": [
+        "Movement",
+        "Charge"
+      ]
+    },
+    {
+      "name": "Blaze of Glory",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "Pick a friendly unit in combat. Until end of phase, each time a model in that unit is slain, make a vengeance roll of D6. On a 4+, inflict 1 mortal damage on an enemy unit in combat with that unit.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "lord_vigilant_on_gryph_stalker",
+      "name": "Lord-Vigilant on Gryph-stalker",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "12\"",
+        "health": 8,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Hallowed Greataxe",
+          "type": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 2,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Gryph-stalker's Beak and Talons",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Deliver Judgement",
+          "timing": "Once Per Battle, Any Combat Phase",
+          "effect": "Pick a friendly non-HERO unit wholly within 12\". The target can use 2 FIGHT abilities this phase. After the first, it has STRIKE-LAST for the rest of the phase.",
+          "phases": [
+            "Combat"
+          ]
+        },
+        {
+          "name": "Plan the Attack",
+          "timing": "Your Hero Phase",
+          "effect": "Pick an objective you do not control. For the rest of the turn, add 1 to hit rolls for combat attacks made by friendly units that target enemy units contesting that objective.",
+          "phases": [
+            "Hero",
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "CAVALRY"
+      ]
+    },
+    {
+      "id": "lord_veritant",
+      "name": "Lord-Veritant",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 6,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Staff of Abjuration",
+          "type": "Melee",
+          "attacks": 1,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 3,
+          "keywords": []
+        },
+        {
+          "name": "Judgement Blade",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Anti-Wizard (+1 Rend)",
+            "Anti-Priest (+1 Rend)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Sense Unholy Sorcery",
+          "timing": "Passive",
+          "effect": "This unit's Gryph-crow is a token. This unit has WARD (5+) while its Gryph-crow is on the battlefield. If you make an unmodified ward roll of 1 for this unit, remove its Gryph-crow.",
+          "phases": [
+            "Any"
+          ]
+        },
+        {
+          "name": "Cleansing Fires",
+          "timing": "Your Hero Phase",
+          "effect": "Pick a visible enemy unit within 12\", make a chanting roll of D6. On a 3+, roll a dice for each model in the target. For each 5+, inflict 1 mortal damage.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "PRIEST",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "prosecutors",
+      "name": "Prosecutors",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "12\"",
+        "health": 2,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Stormcall Javelin (Ranged)",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 1,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        },
+        {
+          "name": "Stormcall Javelin (Melee)",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Skirmishers",
+          "timing": "Passive",
+          "effect": "This unit has a coherency range of 2\".",
+          "phases": [
+            "Any"
+          ]
+        },
+        {
+          "name": "Heralds of Righteousness",
+          "timing": "Passive",
+          "effect": "When you make a charge roll for this unit, roll 1 additional dice.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "liberators",
+      "name": "Liberators",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Warhammer",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        },
+        {
+          "name": "Grandhammer",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Mortal)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Stalwart Defenders",
+          "timing": "Passive",
+          "effect": "Add 3 to this unit's control score while it contests an objective wholly within friendly territory.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

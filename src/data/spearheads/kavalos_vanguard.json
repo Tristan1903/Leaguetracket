@@ -1,0 +1,232 @@
+{
+  "id": "kavalos_vanguard",
+  "faction": "Ossiarch Bonereapers",
+  "spearheadName": "Kavalos Vanguard",
+  "battleTraits": [
+    {
+      "name": "Calculated Feint",
+      "timing": "Passive",
+      "effect": "No mortal damage is inflicted on friendly CAVALRY units by RETREAT abilities.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Kavalos Lance",
+      "timing": "Once Per Turn (Army), Your Hero Phase",
+      "declare": "Pick a friendly unit to be the target.",
+      "effect": "For the rest of the turn, the target can pass across enemy models as if it had FLY.",
+      "phases": [
+        "Hero",
+        "Movement"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Mighty Archaeossian",
+      "timing": "Passive",
+      "effect": "Your general has WARD (5+).",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Murderous Blade",
+      "timing": "Passive",
+      "effect": "Your general's Commander's Blade has Crit (2 Hits).",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Imperious Commander",
+      "timing": "Your Movement Phase",
+      "declare": "Pick a visible friendly unit wholly within 12\" of your general to be the target.",
+      "effect": "Roll a dice. On a 3+, add 2\" to the target's Move characteristic for the rest of the turn.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Cold Savagery",
+      "timing": "Any Combat Phase",
+      "declare": "If your general has not charged this turn and is in combat, pick a visible friendly unit wholly within 12\" of them to be the target.",
+      "effect": "Roll a dice. On a 3+, add 1 to the Rend characteristic of the target's melee weapons, including Companion weapons, for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Feigned Retreat",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "effect": "For the rest of the turn, friendly units can use CHARGE abilities even if they used a RETREAT ability in the same turn.",
+      "phases": [
+        "Movement",
+        "Charge"
+      ]
+    },
+    {
+      "name": "Reinforced Constructs",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "declare": "Pick a friendly unit to be the target.",
+      "effect": "The target has WARD (5+) for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "liege_kavalos",
+      "name": "Liege-Kavalos",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "10\"",
+        "health": 7,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Commander's Blade",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Kavalos Steed's Hooves, Teeth and Barbed Tails",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Signal the Advance",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a visible friendly unit wholly within 12\" of this unit to be the target.",
+          "effect": "Roll a dice. On a 3+, add 1 to charge rolls for the target for the rest of the turn.",
+          "phases": [
+            "Hero",
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "CAVALRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "kavalos_deathriders",
+      "name": "Kavalos Deathriders",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "10\"",
+        "health": 3,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Kavalos Blade",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Kavalos Steed's Hooves and Teeth",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Wheel About",
+          "timing": "Any Combat Phase",
+          "effect": "If this unit charged this turn, roll a dice. On a 3+, this unit can move a distance up to its Move characteristic. It can move through the combat ranges of enemy units but cannot end that move in combat.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "teratic_cohort",
+      "name": "Teratic Cohort",
+      "isGeneral": false,
+      "models": 8,
+      "stats": {
+        "movement": "7\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Cohort Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bone-Deep Savagery",
+          "timing": "Any Movement Phase",
+          "effect": "This unit can move 3\". If it can move into combat, it must. If it was in combat at the start of the move, it must end that move in combat.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "BEAST",
+        "WARD (6+)",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

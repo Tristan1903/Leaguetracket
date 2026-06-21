@@ -1,0 +1,223 @@
+{
+  "id": "starscale_warhost",
+  "faction": "Seraphon",
+  "spearheadName": "Starscale Warhost",
+  "battleTraits": [
+    {
+      "name": "Beast of the Dark Jungles",
+      "timing": "Any Combat Phase",
+      "declare": "Pick your general to use this ability if they are in combat.",
+      "effect": "Pick 1 of the following:\n- Gargantuan Jaws: Pick an enemy unit in combat with your general and roll a dice. If the roll exceeds that unit’s Health characteristic, 1 model in that unit is slain.\n- Roar: Pick an enemy unit in combat with your general. Subtract D6 from that unit’s control score this turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Ancient Strategist",
+      "timing": "Once Per Battle, Enemy Movement Phase",
+      "declare": "Pick a friendly unit wholly within 12\" of your general. You cannot pick your general.",
+      "effect": "That unit can use the 'Normal Move' ability as if it were your movement phase.",
+      "phases": [
+        "Enemy Movement"
+      ]
+    },
+    {
+      "name": "Blade of Realities",
+      "timing": "Passive",
+      "effect": "Add 1 to the Rend characteristic of your general’s Relic Celestite Weapon.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Sotek's Gaze",
+      "timing": "End of Any Turn",
+      "effect": "Roll a dice. Add the roll to your general’s control score this turn.",
+      "phases": [
+        "End of Turn"
+      ]
+    },
+    {
+      "name": "The Wrath of Chotec",
+      "timing": "Passive",
+      "effect": "The Attacks characteristic of your general’s Sunbolt Gauntlet is 6 instead of D6.",
+      "phases": [
+        "Shooting"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Predatory Fighters",
+      "timing": "Once Per Phase, End of Any Turn",
+      "declare": "Roll a dice for each enemy unit in combat with any friendly units.",
+      "effect": "On a 3+, inflict 1 mortal damage on the unit being rolled for.",
+      "phases": [
+        "End of Turn"
+      ]
+    },
+    {
+      "name": "Temple-City Guardians",
+      "timing": "Passive",
+      "effect": "Friendly units have WARD (6+) while they are wholly within friendly territory.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "saurus_oldblood_on_carnosaur",
+      "name": "Saurus Oldblood on Carnosaur",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "10\"",
+        "health": 14,
+        "save": "4+",
+        "control": 5
+      },
+      "weapons": [
+        {
+          "name": "Sunbolt Gauntlet",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": "D6",
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Shoot in Combat"
+          ]
+        },
+        {
+          "name": "Carnosaur's Massive Jaws",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": 3,
+          "keywords": [
+            "Companion"
+          ]
+        },
+        {
+          "name": "Relic Celestite Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Ancient Warlord",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly unit wholly within 12\" of this unit to be the target. You cannot pick this unit.",
+          "effect": "Until the start of your next turn, add 1 to charge rolls for the target.",
+          "phases": [
+            "Hero",
+            "Charge"
+          ]
+        },
+        {
+          "name": "Battle Damaged",
+          "timing": "Passive",
+          "effect": "While this unit has 10 or more damage points, the Attacks characteristic of its Carnosaur's Massive Jaws is 1.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "MONSTER"
+      ]
+    },
+    {
+      "id": "saurus_warriors",
+      "name": "Saurus Warriors",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Celestite Club",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Ordered Cohorts",
+          "timing": "Passive",
+          "effect": "Add 1 to save rolls for this unit while it is contesting an objective you control.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "kroxigor",
+      "name": "Kroxigor",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "5\"",
+        "health": 6,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Drakebite Maul",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Brutal Blows",
+          "timing": "Passive",
+          "effect": "This unit’s melee weapons have Crit (2 Hits) if the target unit has 5 or more models.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    }
+  ]
+}

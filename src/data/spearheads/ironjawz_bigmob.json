@@ -1,0 +1,247 @@
+{
+  "id": "ironjawz_bigmob",
+  "faction": "Orruk Warclans",
+  "spearheadName": "Ironjawz Bigmob",
+  "battleTraits": [
+    {
+      "name": "’Ere We Go!",
+      "timing": "Passive",
+      "effect": "Your Brutes are not set up during the deployment phase. Instead, from the third battle round onwards, you can use the ’Ere We Go! placement ability.",
+      "phases": [
+        "Deployment"
+      ]
+    },
+    {
+      "name": "’Ere We Go! (Placement)",
+      "timing": "Your Movement Phase",
+      "effect": "Set up this unit anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Mighty Destroyers",
+      "timing": "Once Per Turn (Army), Any Hero Phase",
+      "declare": "Pick a friendly unit that was not set up this turn to be the target.",
+      "effect": "The target can move up to 3\". It can move into combat. If it was in combat at the start of the move, it must end that move in combat.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Amberbone Whetstone",
+      "timing": "Passive",
+      "effect": "The Rend characteristic of your general's melee weapons is 2.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Trophy Skulls",
+      "timing": "Passive",
+      "effect": "Your general's Control characteristic is 5.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Armour of Gork",
+      "timing": "Passive",
+      "effect": "Your general has Ward (6+).",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Mega Bossy",
+      "timing": "Passive",
+      "effect": "If this unit charged this turn, for the rest of the turn, add 1 to charge rolls for friendly units while they are wholly within 12\" of this unit.",
+      "phases": [
+        "Charge"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Natural Disaster",
+      "timing": "Passive",
+      "effect": "If you make an unmodified charge roll of 8+ for a friendly unit, add 1 to the Attacks characteristic of that unit’s melee weapons for the rest of the turn.",
+      "phases": [
+        "Charge",
+        "Combat"
+      ]
+    },
+    {
+      "name": "A Proper Ruckus",
+      "timing": "Once Per Battle, Reaction: You declared the ‘Mighty Destroyers’ ability",
+      "effect": "All friendly units on the battlefield that were not set up this turn are the targets of that ability instead of one.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "megaboss",
+      "name": "Megaboss",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "4\"",
+        "health": 8,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Boss-choppa",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 8,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Get Stuck In, Ladz!",
+          "timing": "Your Hero Phase",
+          "declare": "Pick this unit or a friendly Brute unit wholly within 12\" of this unit to be the target.",
+          "effect": "Roll a dice. On a 2+, add 1 to the Attacks characteristic of the target’s melee weapons until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "ardboyz",
+      "name": "Ardboyz",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "4\"",
+        "health": 2,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Choppa or Stikka",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Anti-charge (+1 Rend)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Shield Bash",
+          "timing": "Any Combat Phase",
+          "declare": "Pick an enemy unit within 1\" of this unit to be the target.",
+          "effect": "Make a shield bash roll of D6 for each model in this unit that is within 3\" of the target. For each 6, inflict 1 mortal damage on the target.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "brute_ragerz",
+      "name": "Brute Ragerz",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "4\"",
+        "health": 3,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Rager Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Unleashed Rage",
+          "timing": "Passive",
+          "effect": "This unit has STRIKE-FIRST if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "BRUTE",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "brutes",
+      "name": "Brutes",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "4\"",
+        "health": 3,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Brute Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "You Messin’?",
+          "timing": "Passive",
+          "effect": "Enemy units with a Health characteristic of 1 or 2 cannot contest objectives while they are in combat with this unit.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "BRUTE"
+      ]
+    }
+  ]
+}

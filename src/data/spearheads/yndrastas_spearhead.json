@@ -1,0 +1,300 @@
+{
+  "id": "yndrastas_spearhead",
+  "faction": "Stormcast Eternals",
+  "spearheadName": "Yndrasta's Spearhead",
+  "battleTraits": [
+    {
+      "name": "Scions of the Storm",
+      "timing": "Your Movement Phase (from 3rd battle round onwards)",
+      "effect": "Set up Yndrasta or your Annihilators unit anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Drive Them Back",
+      "timing": "End of Any Turn",
+      "effect": "Pick any number of friendly units contesting an objective and in combat. Each can make a pile-in move. For each, pick an enemy within 1\" and roll a dice. On 4+, inflict 1 mortal damage.",
+      "phases": [
+        "End of Turn",
+        "Combat"
+      ]
+    },
+    {
+      "name": "Defend to the Last",
+      "timing": "Passive",
+      "effect": "Friendly units have WARD (6+) while contesting an objective you control.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "The Prime Huntress",
+      "timing": "Passive",
+      "effect": "The Damage characteristic of Thengavar (Yndrasta's spear) is 2D6 for attacks that target a MONSTER.",
+      "phases": [
+        "Combat"
+      ],
+      "modifiers": [
+        {
+          "target": "weapon",
+          "property": "damage",
+          "value": "2D6",
+          "condition": "targeting MONSTER"
+        }
+      ]
+    },
+    {
+      "name": "Strike with the Tempest's Rage",
+      "timing": "Passive",
+      "effect": "Your general has STRIKE-FIRST if they charged in the same turn.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Dazzling Radiance",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "effect": "Pick your general if they were set up this phase. Return 1 slain model to each friendly unit wholly within 12\" of your general.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Hawk of the Celestial Skies",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "Until end of phase, add 1 to hit rolls for attacks made by friendly units wholly within 12\" of your general.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "regimentAbilities": [],
+  "units": [
+    {
+      "id": "yndrasta",
+      "name": "Yndrasta, the Celestial Spear",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "12\"",
+        "health": 8,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Thengavar (Ranged)",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 1,
+          "hit": "3+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": 4,
+          "keywords": ["Shoot in Combat"]
+        },
+        {
+          "name": "Blade of the High Heavens",
+          "type": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 2,
+          "damage": 3,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Champion of Sigmar",
+          "timing": "Once Per Battle, Any Combat Phase",
+          "effect": "This unit has WARD (5+) this phase.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "FLY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "knight_vexillor",
+      "name": "Knight-Vexillor",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 6,
+        "save": "3+",
+        "control": 5
+      },
+      "weapons": [
+        {
+          "name": "Sigmarite Warblade",
+          "type": "Melee",
+          "attacks": 4,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Banner of the Reforged",
+          "timing": "Your Hero Phase",
+          "effect": "Pick a friendly unit wholly within 12\". Heal (D3) the target. Add 3 to its control score until your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "annihilators",
+      "name": "Annihilators",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "4\"",
+        "health": 3,
+        "save": "2+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Meteoric Hammer",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Force of a Falling Star",
+          "timing": "Any Charge Phase",
+          "effect": "If this unit charged this phase and unmodified charge roll was 8+, pick an enemy unit within 1\". The target has STRIKE-LAST this turn.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "vanquishers",
+      "name": "Vanquishers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Celestial Greatsword",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Lightning Strikes",
+          "timing": "Passive",
+          "effect": "Add 1 to the Damage characteristic of this unit's Celestial Greatswords for attacks that target an enemy unit that has 5 or more models.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "stormstrike_chariot",
+      "name": "Stormstrike Chariot",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "10\"",
+        "health": 10,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Great Stormbow",
+          "type": "Ranged",
+          "range": "18\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Stormstrike Axe",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Gryph-chargers' Beaks and Claws",
+          "type": "Melee",
+          "attacks": 6,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Azyr Unleashed",
+          "timing": "Any Charge Phase",
+          "effect": "If this unit charged this phase, pick an enemy unit within 1\" and roll a dice. On a 2+, inflict D3 mortal damage on the target.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Spearhead Grand Conclave",
+  "description": "An interactive digital companion and league match tracker for Warhammer Age of Sigmar Spearhead, allowing warbands to log games, track points, and update standings in real-time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

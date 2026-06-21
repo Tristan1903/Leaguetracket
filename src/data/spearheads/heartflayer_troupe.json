@@ -1,0 +1,332 @@
+{
+  "id": "heartflayer_troupe",
+  "faction": "Daughters of Khaine",
+  "spearheadName": "Heartflayer Troupe",
+  "battleTraits": [
+    {
+      "name": "Blood Rites",
+      "timing": "Start of Battle Round",
+      "effect": "At the start of each battle round, all friendly units gain the Blood Rites passive ability that corresponds to the current battle round number (units keep all Blood Rites abilities gained in previous battle rounds):\nRound 1 - QUICKENING BLOODLUST: Add 1 to run rolls for this unit.\nRound 2 - HEADLONG FURY: Add 1 to charge rolls for this unit.\nRound 3 - ZEALOT’S RAGE: Add 1 to hit rolls for combat attacks made by this unit.\nRound 4 - SLAUGHTERER’S STRENGTH: Add 1 to wound rolls for combat attacks made by this unit.",
+      "phases": [
+        "Start of Turn"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Bathed in Blood",
+      "timing": "Passive",
+      "effect": "Each time a model is slain by your general, Heal (1) your general.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Fuelled by Revenge",
+      "timing": "Passive",
+      "effect": "Add 1 to the Rend characteristic of melee weapons used by friendly Blood Stalkers units while they are wholly within 12\" of your general.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Flask of Shademist",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "effect": "Until the end of the phase, subtract 1 from hit rolls for attacks that target friendly units while they are wholly within 12\" of your general.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Zealous Orator",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a friendly unit wholly within 9\" of your general that is not in combat. Roll a dice for each slain model from that unit.",
+      "effect": "For each 5+, you can return 1 slain model to that unit.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Murderous Epiphany",
+      "timing": "Once Per Battle, Your Hero Phase",
+      "effect": "All friendly units gain the Blood Rites passive ability they would have gained at the start of the next battle round (they keep this ability for the rest of the battle, but they do not gain it for a second time at the start of the next battle round).",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Blessing of Khaine",
+      "timing": "Any Combat Phase",
+      "declare": "Pick a friendly unit wholly within 12\" of your general. You cannot pick your general.",
+      "effect": "Add 1 to ward rolls for that unit this phase.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "melusai_ironscale",
+      "name": "Melusai Ironscale",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "8\"",
+        "health": 6,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Keldrisaíth (Ranged)",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        },
+        {
+          "name": "Keldrisaíth (Melee)",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 6,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "All-out Slaughter",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly unit wholly within 12\" of this unit to be the target. You cannot pick this unit.",
+          "effect": "Add 1 to the Attacks characteristic of the target's melee weapons for the rest of the turn.",
+          "phases": [
+            "Hero"
+          ]
+        },
+        {
+          "name": "Turned to Crystal",
+          "timing": "End of Any Turn",
+          "declare": "Pick an enemy unit within 1\" of this unit to be the target and roll a dice.",
+          "effect": "On a 2+, inflict 1 mortal damage on the target.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "witch_aelves_1",
+      "name": "Witch Aelves",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Paired Sciansá",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Frenzied Fervour",
+          "timing": "Passive",
+          "effect": "Add 1 to the Rend characteristic of this unit’s melee weapons if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "witch_aelves_2",
+      "name": "Witch Aelves (Squad 2)",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Paired Sciansá",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Frenzied Fervour",
+          "timing": "Passive",
+          "effect": "Add 1 to the Rend characteristic of this unit’s melee weapons if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "doomfire_warlocks",
+      "name": "Doomfire Warlocks",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "14\"",
+        "health": 3,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Doomfire Crossbow",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Cursed Scimitar",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Dark Steed’s Vicious Bite",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Doomfire",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a visible enemy unit within 12\" of this unit to be the target, then make a casting roll of 2D6.",
+          "effect": "On a 6+, inflict D3 mortal damage on the target.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "blood_stalkers",
+      "name": "Blood Stalkers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "8\"",
+        "health": 2,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Heartseeker Bow",
+          "type": "Ranged",
+          "range": "18\"",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        },
+        {
+          "name": "Scianlar",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Heartseekers",
+          "timing": "Passive",
+          "effect": "Shooting attacks made by this unit score critical hits on unmodified hit rolls of 5+ if this unit did not use a MOVE ability in the same turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    }
+  ]
+}

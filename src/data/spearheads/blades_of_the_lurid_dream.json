@@ -1,0 +1,270 @@
+{
+  "id": "blades_of_the_lurid_dream",
+  "faction": "Hedonites of Slaanesh",
+  "spearheadName": "Blades of the Lurid Dream",
+  "battleTraits": [
+    {
+      "name": "Temptations of Slaanesh",
+      "timing": "Start of Battle Round",
+      "effect": "You receive 6 temptation dice at the start of the battle round. Each time your opponent makes a failed hit roll, a failed wound roll or a failed save roll, you can offer them a temptation dice. If they accept your offer, that roll is replaced with a 6. Rolls replaced in this way cannot be re-rolled or modified.\n\nEach time your opponent accepts your offer of a temptation dice, you gain D6 depravity points. Each time your opponent rejects your offer of a temptation dice, inflict D3 mortal damage on the unit for which the roll was made.\n\nYou cannot offer your opponent a temptation dice for the same enemy unit more than once per phase. At the end of the battle round, all remaining temptation dice are lost.\n\nAll friendly units gain passive abilities from the table below based on the number of depravity points you have. These abilities are cumulative:\n- 12+ TANTALISING TORMENT: This unit can use a RUN ability and still use CHARGE abilities later in the turn.\n- 18+ SADISTIC SPITE: This unit's melee weapons have Crit (Mortal).\n- 24+ OBLIVIOUS INDULGENCE: This unit has WARD (5+).",
+      "phases": [
+        "Start of Turn"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Sceptre of Domination",
+      "timing": "Any Combat Phase",
+      "declare": "Roll a dice for each enemy unit in combat with your general.",
+      "effect": "On a 5+, the unit being rolled for has STRIKE-LAST this phase.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Twisted Mirror",
+      "timing": "Once Per Turn, Your Shooting Phase",
+      "declare": "Pick an enemy unit within 9\" of your general and roll a dice.",
+      "effect": "On a 4+, subtract 1 from save rolls for that unit until the start of your next turn.",
+      "phases": [
+        "Shooting"
+      ]
+    },
+    {
+      "name": "Cacophonic Choir",
+      "timing": "Your Hero Phase",
+      "declare": "Make a casting roll of 2D6.",
+      "effect": "On a 6+, make a cacophony roll of D6. Inflict D3 mortal damage on each enemy unit (roll for each) within 6\" of your general that has a Control characteristic less than the cacophony roll.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Pendant of Slaanesh",
+      "timing": "Your Hero Phase",
+      "effect": "Heal (D3) your general.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Unparalleled Speed",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "declare": "Pick a friendly unit to use this ability.",
+      "effect": "That unit has STRIKE-FIRST this phase.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Locus of Diversion",
+      "timing": "Once Per Turn, Your Movement Phase",
+      "declare": "Pick a friendly unit to use this ability.",
+      "effect": "For the rest of the turn, that unit can use a RETREAT ability and still use SHOOT and/or CHARGE abilities later in the turn.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "shardspeaker",
+      "name": "Shardspeaker of Slaanesh",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 5,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Haze Staff",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Vision of Damnation",
+          "timing": "Your Hero Phase",
+          "declare": "Make a casting roll of 2D6.",
+          "effect": "On a 6+, roll 6 dice. For each 4+, you receive 1 depravity point.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "WIZARD",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "blissbarb_archers",
+      "name": "Blissbarb Archers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Blissbarb Bow",
+          "type": "Ranged",
+          "range": "18\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Sybarite Blade",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Light-Footed Killers",
+          "timing": "Passive",
+          "effect": "This unit can use SHOOT abilities even if it used a RUN ability in the same turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "slickblade_seekers",
+      "name": "Slickblade Seekers",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "12\"",
+        "health": 4,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Slickblade Glaive",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Exalted Steed’s Poisoned Tongue",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Unrivalled Velocity",
+          "timing": "Passive",
+          "effect": "You can re-roll charge rolls for this unit.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "REINFORCEMENTS"
+      ]
+    },
+    {
+      "id": "slaangor_fiendbloods",
+      "name": "Slaangor Fiendbloods",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "6\"",
+        "health": 3,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Razor-sharp Claws",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Razor-sharp Claw and Gilded Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Slaughter at Any Cost",
+          "timing": "Enemy Shooting Phase",
+          "declare": "This unit can use this ability if any damage points were allocated to it this turn.",
+          "effect": "This unit can use the ‘Normal Move’ ability as if it were your movement phase.",
+          "phases": [
+            "Enemy Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

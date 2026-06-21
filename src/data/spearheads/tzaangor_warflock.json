@@ -1,0 +1,299 @@
+{
+  "id": "tzaangor_warflock",
+  "faction": "Disciples of Tzeentch",
+  "spearheadName": "Tzaangor Warflock",
+  "battleTraits": [
+    {
+      "name": "Fated Arrival",
+      "timing": "Passive",
+      "effect": "Your Tzaangor Enlightened unit is not set up during the deployment phase. Instead, from the second battle round onwards, it can use the following ability:\n- Fated Arrival (Your Movement Phase): Set up this unit wholly within friendly territory, within 1\" of a battlefield edge and more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Predict the Future",
+      "timing": "Your Hero Phase",
+      "effect": "You can look at up to 3 cards from the top of your battle tactic deck without adding them to your hand. Then, in any order, return each card face down to either the top or the bottom of your battle tactic deck.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Cheat Destiny",
+      "timing": "Reaction",
+      "declare": "Reaction: You used a command on a battle tactic card.",
+      "effect": "Instead of discarding that card, return it face down to the bottom of your battle tactic deck.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Predicted Strike",
+      "timing": "Once Per Battle, Enemy Movement Phase",
+      "declare": "Pick a visible friendly unit wholly within 12\" of your general and that is not in combat to be the target.",
+      "effect": "The target can move D6\". It cannot move through the combat ranges of enemy units or end that move in combat.",
+      "phases": [
+        "Enemy Movement"
+      ]
+    },
+    {
+      "name": "Fold Reality",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible friendly unit wholly within 12\" of your general to be the target, then make a casting roll of 2D6.",
+      "effect": "On a 6+, remove the target from the battlefield and set it up again wholly within 12\" of your general and more than 6\" from all enemy units.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Infernal Gateway",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible enemy unit within 18\" of your general to be the target, then make a casting roll of 2D6.",
+      "effect": "On a 5+, roll either 3 dice or a number of dice equal to the number of battle tactic cards you have discarded this battle. For each 4+, inflict 1 mortal damage on the target.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Mutagenic Sorcery",
+      "timing": "End of Any Turn",
+      "declare": "Pick a visible enemy unit within 12\" of your general to be the enemy target. Then, pick a friendly Tzaangors unit in combat with the enemy target to be the friendly target.",
+      "effect": "Roll a D3. On a 2+:\n- Inflict an amount of mortal damage on the enemy target equal to the roll.\n- You can return 1 slain model to the friendly target.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Constant Flux",
+      "timing": "Passive",
+      "effect": "While you are the Underdog, subtract 1 from the Rend characteristic of weapons used for attacks that target friendly units.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Arcane Ritualists",
+      "timing": "Passive",
+      "effect": "Add 1 to casting rolls for your general while they are wholly within 6\" of another friendly unit.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "tzaangor_shaman",
+      "name": "Tzaangor Shaman",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "14\"",
+        "health": 6,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Staff of Change and Ritual Dagger",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        },
+        {
+          "name": "Disc’s Teeth and Horns",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Mutative Aura",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a visible enemy unit within 18\" of this unit to be the target, then make a casting roll of 2D6.",
+          "effect": "On a 7+, until the start of your next turn, each time an unmodified hit roll for a combat attack made by the target is 1, inflict 1 mortal damage on the target after the FIGHT ability has been resolved.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "WIZARD",
+        "CAVALRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "tzaangor_enlightened",
+      "name": "Tzaangor Enlightened",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "14\"",
+        "health": 4,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Tzeentchian Spear and Vicious Beak",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Disc’s Teeth and Horns",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Deliver on Fate",
+          "timing": "Passive",
+          "effect": "Add 1 to charge rolls for this unit while you are the Underdog.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "tzaangor_skyfires",
+      "name": "Tzaangor Skyfires",
+      "isGeneral": false,
+      "models": 3,
+      "stats": {
+        "movement": "14\"",
+        "health": 4,
+        "save": "4+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Arrow of Fate",
+          "type": "Ranged",
+          "range": "18\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        },
+        {
+          "name": "Bow Stave and Vicious Beak",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Disc’s Teeth and Horns",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Destined Quarry",
+          "timing": "Your Shooting Phase",
+          "declare": "Pick an enemy unit that had any damage points allocated to it this phase by this unit’s shooting attacks to be the target.",
+          "effect": "Add 1 to hit rolls for combat attacks made by friendly units that target that enemy unit for the rest of the turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY"
+      ]
+    },
+    {
+      "id": "tzaangors_10",
+      "name": "Tzaangors",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "6\"",
+        "health": 2,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Savage Blades and Vicious Beak",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Eldritch Raiders",
+          "timing": "Passive",
+          "effect": "Add 1 to wound rolls for this unit’s attacks while it is wholly within enemy territory.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    }
+  ]
+}

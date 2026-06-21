@@ -1,0 +1,262 @@
+{
+  "id": "bloodwind_legion",
+  "faction": "Slaves to Darkness",
+  "spearheadName": "Bloodwind Legion",
+  "battleTraits": [
+    {
+      "name": "Eye of the Gods",
+      "timing": "Once Per Turn, End of Any Turn",
+      "effect": "Pick a friendly unit contesting an objective not controlled by opponent and not in combat, OR a unit that destroyed an enemy unit this turn. Roll on the Eye of the Gods table: 1=No effect, 2=WARD(6+), 3=+1 to run rolls, 4=-1 to wound rolls vs target, 5=+1 Rend, 6=Pick any ability.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Mark of Khorne",
+      "timing": "Passive",
+      "effect": "Add 1 to the Rend characteristic of your general's melee weapons if they charged in the same turn.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Mark of Tzeentch",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "effect": "Pick a friendly unit (not your general). Remove it and set it up again wholly within 6\" of your general and more than 6\" from all enemies. It cannot use Move abilities for the rest of the phase.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Mark of Nurgle",
+      "timing": "Passive",
+      "effect": "Subtract 1 from wound rolls for combat attacks that target your general.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Mark of Slaanesh",
+      "timing": "Passive",
+      "effect": "Your general has STRIKE-FIRST.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "The Dread Banner",
+      "timing": "Once Per Battle, Start of the First Battle Round",
+      "effect": "Pick a friendly Chaos Warriors or Chaos Knights unit. Immediately roll on the Eye of the Gods table for that unit.",
+      "phases": [
+        "Start of Turn"
+      ]
+    },
+    {
+      "name": "Fierce Conquerors",
+      "timing": "Passive",
+      "effect": "Add 3 to the control scores of friendly Chaos Warriors units.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "chaos_lord",
+      "name": "Chaos Lord",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 6,
+        "save": "3+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Reaperblade",
+          "type": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": ["Crit (Mortal)"]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Favoured of the Pantheon",
+          "timing": "Your Hero Phase",
+          "effect": "Roll a dice. On a 4+, you can roll on the Eye of the Gods table for this unit.",
+          "phases": [
+            "Hero"
+          ]
+        },
+        {
+          "name": "Iron-Willed Champion",
+          "timing": "Any Combat Phase",
+          "effect": "Pick a friendly unit wholly within 12\" (not this unit), roll a dice. On a 2+, add 1 to hit rolls for attacks made by the target this phase.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "chaos_chariot",
+      "name": "Chaos Chariot",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "10\"",
+        "health": 7,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Chaos War-flail",
+          "type": "Melee",
+          "attacks": 6,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Driver's Lashing Whip",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Warhorses' Trampling Hooves",
+          "type": "Melee",
+          "attacks": 4,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Swift Death",
+          "timing": "Your Charge Phase",
+          "effect": "If this unit charged this phase, pick an enemy unit within 1\", roll a dice. On a 2+, inflict D3 mortal damage.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE"
+      ]
+    },
+    {
+      "id": "chaos_warriors",
+      "name": "Chaos Warriors",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "5\"",
+        "health": 2,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Rune-etched Halberd",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bringers of Desolation",
+          "timing": "Passive",
+          "effect": "Add 1 to wound rolls for combat attacks made by this unit that target an enemy unit contesting an objective you do not control.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "chaos_knights",
+      "name": "Chaos Knights",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "10\"",
+        "health": 3,
+        "save": "3+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Cursed Lance",
+          "type": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Charge (+1 Damage)"
+          ]
+        },
+        {
+          "name": "Chaos Steed's Trampling Hooves",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Impaling Charge",
+          "timing": "Passive",
+          "effect": "Add 1 to the Rend characteristic of this unit's Cursed Lances if it charged in the same turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY"
+      ]
+    }
+  ]
+}

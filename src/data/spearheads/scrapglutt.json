@@ -1,0 +1,305 @@
+{
+  "id": "scrapglutt",
+  "faction": "Ogor Mawtribes",
+  "spearheadName": "Scrapglutt",
+  "battleTraits": [
+    {
+      "name": "Better Late Than Never",
+      "timing": "Passive",
+      "effect": "A unit of Ironguts with 4 models is not set up during the deployment phase. Instead, in the third battle round, that unit can use the ‘Let’s Get Stuck In’ ability.",
+      "phases": [
+        "Deployment"
+      ]
+    },
+    {
+      "name": "Let's Get Stuck In",
+      "timing": "Your Movement Phase",
+      "effect": "Set up this unit wholly within friendly territory, wholly within 6\" of the battlefield edge, and not in combat.",
+      "phases": [
+        "Movement"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Savage Instincts",
+      "timing": "Reaction: You declared a FIGHT ability for your general",
+      "effect": "Pick a friendly unit that has not used a FIGHT ability this turn and is within your general’s combat range to be the target. The target can be picked to use a FIGHT ability immediately after the FIGHT ability used by your general has been resolved.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Nasty Trap",
+      "timing": "Once Per Battle, Your Movement Phase",
+      "declare": "Pick an enemy unit within 12\" of your general to be the target.",
+      "effect": "Give the target your general’s Trap token. While the target has a Trap token, each time the target is picked to use a Move or Charge ability, roll a dice. On a 4+, that Move or Charge ability has no effect and the target’s Trap token is removed.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Massive Bulk",
+      "timing": "Passive",
+      "effect": "Add 2 to the Health characteristic of your general.",
+      "phases": [
+        "Any"
+      ]
+    },
+    {
+      "name": "Veteran Hunter",
+      "timing": "Once Per Battle, Any Hero Phase",
+      "declare": "Pick an enemy unit within 12\" of your general to be the target.",
+      "effect": "For the rest of the turn, add 1 to the Rend characteristic of your general’s combat attacks that target that unit.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "It's a Hard Life",
+      "timing": "Any Hero Phase",
+      "declare": "Pick a friendly Gnoblars unit within your general’s combat range to be the target.",
+      "effect": "Roll a D3. On a 2+:\n- Heal (X) your general where X is equal to the roll.\n- 1 model in that Gnoblars unit is slain.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Frenzied Artillery",
+      "timing": "Passive",
+      "effect": "If the unmodified charge roll for a friendly Gnoblar Scraplauncher is 6+, add 3 to the Attacks characteristic of the target's Companion weapons for the rest of the turn.",
+      "phases": [
+        "Charge"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "mantrappers",
+      "name": "Mantrappers",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 7,
+        "save": "5+",
+        "control": 5
+      },
+      "weapons": [
+        {
+          "name": "Mantrapper Crossbow",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": []
+        },
+        {
+          "name": "Frost Sabre's Fangs",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Companion"
+          ]
+        },
+        {
+          "name": "Culling Knife",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Staying Useful",
+          "timing": "Passive",
+          "effect": "While any of this unit's Gnoblar or Frost Sabre tokens are on the battlefield, this unit has WARD (5+). Each time you make a successful ward roll for this unit, remove 1 of this unit's tokens from the battlefield. If this unit's Frost Sabre token has been removed, it can no longer attack with its Frost Sabre's Fangs.",
+          "phases": [
+            "Any"
+          ]
+        },
+        {
+          "name": "No Slacking!",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly Infantry unit wholly within 12\" of this unit.",
+          "effect": "Roll a dice. On a 3+, add the result to the target’s control score until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "gnoblar_scraplauncher",
+      "name": "Gnoblar Scraplauncher",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "9\"",
+        "health": 9,
+        "save": "4+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Piles of Old Scrap",
+          "type": "Ranged",
+          "range": "24\"",
+          "attacks": "3D6",
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        },
+        {
+          "name": "Scrappers' Stabbers",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 7,
+          "hit": "5+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Rhinox's Sharp Horns",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 1,
+          "damage": "D3",
+          "keywords": [
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Rain of Scrap",
+          "timing": "Your Shooting Phase",
+          "declare": "Pick an enemy unit that had any models slain this turn by this unit's shooting attacks to be the target.",
+          "effect": "Subtract 1 from hit rolls for the target’s attacks for the rest of the turn.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "WAR MACHINE"
+      ]
+    },
+    {
+      "id": "ironguts",
+      "name": "Ironguts",
+      "isGeneral": false,
+      "models": 2,
+      "stats": {
+        "movement": "6\"",
+        "health": 4,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Irongut Weapon",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "2+",
+          "rend": 2,
+          "damage": 3,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Down to the Ironguts",
+          "timing": "Passive",
+          "effect": "Ignore negative modifiers to this unit's control score.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY"
+      ]
+    },
+    {
+      "id": "gnoblars",
+      "name": "Gnoblars",
+      "isGeneral": false,
+      "models": 12,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Sharp Stuff",
+          "type": "Ranged",
+          "range": "8\"",
+          "attacks": 1,
+          "hit": "4+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Motley Assortment of Weapons",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 1,
+          "hit": "5+",
+          "wound": "5+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "No Shortage of Volunteers",
+          "timing": "End of Any Turn",
+          "effect": "You can return D3 models to this unit.",
+          "phases": [
+            "End of Turn"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS"
+      ]
+    }
+  ]
+}

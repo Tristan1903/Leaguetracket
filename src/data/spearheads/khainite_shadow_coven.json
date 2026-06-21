@@ -1,0 +1,331 @@
+{
+  "id": "khainite_shadow_coven",
+  "faction": "Daughters of Khaine",
+  "spearheadName": "Khainite Shadow Coven",
+  "battleTraits": [
+    {
+      "name": "Shadowmasked",
+      "timing": "Once Per Turn, Any Charge Phase",
+      "declare": "Pick a friendly INFANTRY unit that is in combat and did not charge this turn to be the target.",
+      "effect": "Subtract 1 from hit rolls and wound rolls for combat attacks that target that friendly unit for the rest of the turn.",
+      "phases": [
+        "Charge",
+        "Combat"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Shadow Avatar",
+      "timing": "Once Per Battle, Your Combat Phase",
+      "effect": "Add 1 to the Rend characteristic of your general's melee weapons for the rest of the turn.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Frenzied Exhortations",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible friendly unit wholly within 12\" of your general to be the target.",
+      "effect": "Roll a dice. On a 3+, add 1 to ward rolls for the target for the rest of the turn.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Boiling Blood",
+      "timing": "Your Shooting Phase",
+      "declare": "Pick a visible enemy unit within 12\" of your general to be the target.",
+      "effect": "Roll a dice. If the roll equals or exceeds the target's Save characteristic, halve the target's Move characteristic until the start of your next turn.",
+      "phases": [
+        "Shooting"
+      ]
+    },
+    {
+      "name": "Bladed Impact",
+      "timing": "Any Charge Phase",
+      "declare": "If your general charged this phase, pick an enemy unit within 1\" of them to be the target.",
+      "effect": "Roll a D3. On a 2+, inflict an amount of mortal damage on the target equal to the roll.",
+      "phases": [
+        "Charge"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Bleed Them Pale",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "declare": "Pick a friendly INFANTRY unit that is in combat and did not charge this turn to be the target.",
+      "effect": "The target can move 6\" but cannot end that move in combat.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Murderous Strike",
+      "timing": "Passive",
+      "effect": "Add 1 to the Rend characteristic of melee weapons used by friendly INFANTRY units that charged in the same turn.",
+      "phases": [
+        "Combat"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "slaughter_queen_on_cauldron",
+      "name": "Slaughter Queen on Cauldron of Blood",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 12,
+        "save": "4+",
+        "control": 5
+      },
+      "weapons": [
+        {
+          "name": "Shrine Guardians’ Blades",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 9,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Consecrated Revulsion",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a visible friendly INFANTRY unit wholly within 12\" of this unit to be the target.",
+          "effect": "Roll a dice. On a 3+, add 1 to save rolls for the target until the start of your next turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "PRIEST",
+        "WAR MACHINE",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "hag_queen",
+      "name": "Hag Queen",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "6\"",
+        "health": 5,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Blade of Khaine",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Bloody Incitement",
+          "timing": "Any Combat Phase",
+          "declare": "Pick a visible friendly unit wholly within 12\" of this unit to be the target.",
+          "effect": "If this unit is in combat, the target's melee weapons have Crit (Auto-wound) for the rest of the turn. If this unit is not in combat, roll a dice. On a 3+, the target's melee weapons have Crit (Auto-wound) for the rest of the turn.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "PRIEST",
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "bloodwrack_medusa",
+      "name": "Bloodwrack Medusa",
+      "isGeneral": false,
+      "models": 1,
+      "stats": {
+        "movement": "8\"",
+        "health": 6,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Bloodwrack Spear",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Exsanguinating Glare",
+          "timing": "Your Shooting Phase",
+          "declare": "If this unit is in combat, pick an enemy unit in combat with it to be the target. Otherwise, pick a visible enemy unit within 12\" of it to be the target.",
+          "effect": "Roll a dice. On a 3+, inflict 1 mortal damage on the target. Then, if any enemy models were slain by that mortal damage, inflict an additional 1 mortal damage on the target.",
+          "phases": [
+            "Shooting"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "WIZARD",
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "sisters_of_slaughter_1",
+      "name": "Sisters of Slaughter",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Kruiplash",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Dance of Death",
+          "timing": "Once Per Turn (Army), Enemy Combat Phase",
+          "effect": "If this unit is in combat, it can move 2D6\". It can move through the combat ranges of enemy units but must end that move in combat.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "sisters_of_slaughter_2",
+      "name": "Sisters of Slaughter (Squad 2)",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Kruiplash",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Dance of Death",
+          "timing": "Once Per Turn (Army), Enemy Combat Phase",
+          "effect": "If this unit is in combat, it can move 2D6\". It can move through the combat ranges of enemy units but must end that move in combat.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "REINFORCEMENTS",
+        "WARD (6+)"
+      ]
+    },
+    {
+      "id": "khainite_shadowstalkers",
+      "name": "Khainite Shadowstalkers",
+      "isGeneral": false,
+      "models": 9,
+      "stats": {
+        "movement": "6\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Cursed Bolts and Missiles",
+          "type": "Ranged",
+          "range": "10\"",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        },
+        {
+          "name": "Blades of Murder",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Shadow Leap",
+          "timing": "Once Per Battle, Your Movement Phase",
+          "effect": "Remove this unit from the battlefield and set it up again on the battlefield more than 6\" from all enemy units.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "WARD (6+)"
+      ]
+    }
+  ]
+}

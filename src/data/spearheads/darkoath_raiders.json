@@ -1,0 +1,197 @@
+{
+  "id": "darkoath_raiders",
+  "faction": "Slaves to Darkness",
+  "spearheadName": "Darkoath Raiders",
+  "battleTraits": [
+    {
+      "name": "Oaths of Darkness",
+      "timing": "Once Per Turn (Army), Your Hero Phase",
+      "effect": "You can reveal 1 battle tactic card in your hand to your opponent. If you do so, that battle tactic card becomes your oath for the rest of the turn. If scored, it is Fulfilled; place it to one side, you can still use the command on it and it does not count towards hand limits.",
+      "phases": ["Hero"]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Bloodthirsty Blade",
+      "timing": "Passive",
+      "effect": "The Rend characteristic of your general's Rune-etched Axe is 2.",
+      "phases": ["Combat"]
+    },
+    {
+      "name": "Godshadow Talisman",
+      "timing": "Passive",
+      "effect": "Your general has Ward (4+).",
+      "phases": ["Any"]
+    },
+    {
+      "name": "Champion of Raids",
+      "timing": "Your Charge Phase",
+      "effect": "Pick another friendly unit wholly within 12\" of your general. The target can re-roll charge rolls for the rest of the turn.",
+      "phases": ["Charge"]
+    },
+    {
+      "name": "Fell Ritualist",
+      "timing": "Passive",
+      "effect": "Each time you draw battle tactic cards, if your general is on the battlefield, you can choose to draw 1 additional battle tactic card, then put 1 of your battle tactic cards back at the bottom of your deck.",
+      "phases": ["Any"]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Rage of Arkhar",
+      "timing": "Once Per Turn (Army), Any Combat Phase",
+      "effect": "Pick a friendly unit in combat. For the rest of the turn, add 1 to the Attacks and Rend characteristics of the target's melee weapons (does not affect Companion weapons).",
+      "phases": ["Combat"]
+    },
+    {
+      "name": "Fearless Invaders",
+      "timing": "Once Per Turn (Army), Your Movement Phase",
+      "effect": "Pick a friendly unit in combat. If the target uses a Retreat ability this turn, no mortal damage is inflicted on it and it can still use Charge abilities later in the turn.",
+      "phases": ["Movement", "Charge"]
+    }
+  ],
+  "units": [
+    {
+      "id": "darkoath_warqueen",
+      "name": "Darkoath Warqueen",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "5\"",
+        "health": 5,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Rune-etched Axe",
+          "type": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": ["Crit (Mortal)"]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Oath of Supremacy",
+          "timing": "Your Hero Phase",
+          "effect": "Pick a friendly unit wholly within 12\" of your general. Until the start of your next turn, add 1 to hit rolls for attacks made by the target.",
+          "phases": ["Hero", "Combat", "Shooting"]
+        }
+      ],
+      "keywords": ["HERO", "INFANTRY", "WARD (5+)"]
+    },
+    {
+      "id": "darkoath_savagers",
+      "name": "Darkoath Savagers",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Darkoath Weapons",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": ["Crit (Mortal)"]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Visions of Glory",
+          "timing": "Your Hero Phase",
+          "effect": "If this unit includes a Godspeaker, roll 8 dice. For each 4+, until the start of your next turn, you can re-roll 1 hit roll, 1 wound roll, 1 run roll, or 1 save roll for this unit.",
+          "phases": ["Hero"]
+        }
+      ],
+      "keywords": ["INFANTRY"]
+    },
+    {
+      "id": "darkoath_fellriders",
+      "name": "Darkoath Fellriders",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "12\"",
+        "health": 3,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Fellrider Blades",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": ["Charge (+1 Damage)"]
+        },
+        {
+          "name": "Warsteed's Hooves",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": ["Companion"]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Swift Attackers",
+          "timing": "Passive",
+          "effect": "Subtract 1 from hit rolls for shooting attacks that target this unit.",
+          "phases": ["Shooting"]
+        }
+      ],
+      "keywords": ["CAVALRY", "REINFORCEMENTS"]
+    },
+    {
+      "id": "darkoath_marauders",
+      "name": "Darkoath Marauders",
+      "isGeneral": false,
+      "models": 10,
+      "stats": {
+        "movement": "5\"",
+        "health": 1,
+        "save": "5+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Raider Weapons",
+          "type": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": []
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Glorious Death",
+          "timing": "Passive",
+          "effect": "Each time a model in this unit is slain by a combat attack and was in combat with the attacking unit, roll a dice. On a 5+, inflict 1 mortal damage on the attacking unit after the Fight ability is resolved.",
+          "phases": ["Combat"]
+        }
+      ],
+      "keywords": ["INFANTRY", "REINFORCEMENTS"]
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "id": "cursed_shacklehorde",
+  "faction": "Nighthaunt",
+  "spearheadName": "Cursed Shacklehorde",
+  "battleTraits": [
+    {
+      "name": "Spectral Procession",
+      "timing": "Passive",
+      "effect": "1 of your Bladegheist Revenants units and 1 of your Dreadscythe Harridans units start the battle in reserve. From the second battle round onwards, you can use the 'Cackling Arrival' ability.",
+      "phases": [
+        "Deployment"
+      ]
+    },
+    {
+      "name": "Cackling Arrival",
+      "timing": "Once Per Turn (Army), Your Movement Phase",
+      "declare": "Pick 1 of your units in reserve.",
+      "effect": "Set up that unit anywhere on the battlefield more than 6\" from all enemy units.",
+      "phases": [
+        "Movement"
+      ]
+    },
+    {
+      "name": "Ethereal",
+      "timing": "Passive",
+      "effect": "Ignore negative modifiers to save rolls for friendly units.",
+      "phases": [
+        "Any"
+      ]
+    }
+  ],
+  "enhancements": [
+    {
+      "name": "Unholy Visage",
+      "timing": "Your Hero Phase",
+      "declare": "Pick a visible enemy unit within 6\" of your general.",
+      "effect": "Roll a dice. On a 3+, the target must immediately use a RETREAT ability as if it were the enemy movement phase.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Tales of Horror",
+      "timing": "Once Per Battle, Any Combat Phase",
+      "declare": "Pick an enemy INFANTRY or CAVALRY unit within 6\" of your general.",
+      "effect": "For the rest of the battle, if the target is replaced using the ‘Call for Reinforcements’ ability, halve the number of models in the replacement unit, rounding up.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Deathly Possessor",
+      "timing": "Any Combat Phase",
+      "declare": "Pick an enemy HERO within 12\" of your general to be the target, then pick another enemy unit within the target’s combat range to be the victim.",
+      "effect": "Roll a D3. On a 2+, pick one:\n- Inflict mortal damage on the target equal to the roll.\n- Inflict mortal damage on the victim equal to the roll.",
+      "phases": [
+        "Combat"
+      ]
+    },
+    {
+      "name": "Spectral Howl",
+      "timing": "Once Per Battle, Any Hero Phase",
+      "declare": "Pick an enemy unit within 12\" of your general to be the target.",
+      "effect": "For the rest of the turn, subtract 1 from the number of dice rolled when making charge rolls for the target, to a minimum of 1.",
+      "phases": [
+        "Hero"
+      ]
+    }
+  ],
+  "regimentAbilities": [
+    {
+      "name": "Discorporate",
+      "timing": "Once Per Turn (Army), Any Hero Phase",
+      "declare": "Pick a friendly unit to be the target.",
+      "effect": "Roll a dice. On a 3+, add 1 to save rolls for the target for the rest of the turn.",
+      "phases": [
+        "Hero"
+      ]
+    },
+    {
+      "name": "Mounting Dread",
+      "timing": "Once Per Turn (Army), End of Any Turn",
+      "declare": "Pick a friendly unit to be the target.",
+      "effect": "Roll a dice. On a 2+, subtract the current battle round number from the control scores of enemy units while they are in combat with the target.",
+      "phases": [
+        "End of Turn"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "spirit_torment",
+      "name": "Spirit Torment",
+      "isGeneral": true,
+      "models": 1,
+      "stats": {
+        "movement": "8\"",
+        "health": 5,
+        "save": "5+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Shacklegheist Chains",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 5,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Captured Soul Energy",
+          "timing": "Your Hero Phase",
+          "declare": "Pick a friendly unit wholly within 12\" of this unit to be the target.",
+          "effect": "Roll a dice. On a 3+, add 1 to wound rolls for the target’s combat attacks for the rest of the turn.",
+          "phases": [
+            "Hero"
+          ]
+        }
+      ],
+      "keywords": [
+        "HERO",
+        "INFANTRY",
+        "FLY",
+        "WARD (5+)"
+      ]
+    },
+    {
+      "id": "chainghasts",
+      "name": "Chainghasts",
+      "isGeneral": false,
+      "models": 2,
+      "stats": {
+        "movement": "8\"",
+        "health": 3,
+        "save": "6+",
+        "control": 2
+      },
+      "weapons": [
+        {
+          "name": "Ghastflails (Ranged)",
+          "type": "Ranged",
+          "range": "12\"",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 2,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        },
+        {
+          "name": "Ghastflails (Melee)",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 2,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Another Link in the Chain",
+          "timing": "Your Combat Phase",
+          "effect": "Roll a dice. Add 1 to the roll if this unit is wholly within 12\" of any friendly Spirit Torments. On a 3+, for the rest of the turn, add 1 to hit rolls for combat attacks made by friendly units while they are wholly within 12\" of this unit.",
+          "phases": [
+            "Combat"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "WARD (5+)"
+      ]
+    },
+    {
+      "id": "bladegheist_revenants",
+      "name": "Bladegheist Revenants",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "8\"",
+        "health": 2,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Tomb Greatblade",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 2,
+          "hit": "3+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Thrashing Desperation",
+          "timing": "Passive",
+          "effect": "While this unit contests an objective you control, enemy units cannot end a charge move within ½\" of this unit unless the unmodified charge roll was 5 or more.",
+          "phases": [
+            "Charge"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "WARD (5+)"
+      ]
+    },
+    {
+      "id": "dreadscythe_harridans",
+      "name": "Dreadscythe Harridans",
+      "isGeneral": false,
+      "models": 5,
+      "stats": {
+        "movement": "8\"",
+        "health": 2,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Scythed Limbs",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "4+",
+          "wound": "4+",
+          "rend": 1,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Harrowing Shrieks",
+          "timing": "Passive",
+          "effect": "Enemy units cannot be healed or have slain models returned to them while they are in combat with this unit.",
+          "phases": [
+            "Any"
+          ]
+        }
+      ],
+      "keywords": [
+        "INFANTRY",
+        "FLY",
+        "WARD (5+)"
+      ]
+    },
+    {
+      "id": "dreadblade_harrows",
+      "name": "Dreadblade Harrows",
+      "isGeneral": false,
+      "models": 2,
+      "stats": {
+        "movement": "12\"",
+        "health": 3,
+        "save": "6+",
+        "control": 1
+      },
+      "weapons": [
+        {
+          "name": "Dreadblade",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 4,
+          "hit": "4+",
+          "wound": "3+",
+          "rend": 1,
+          "damage": 2,
+          "keywords": [
+            "Crit (Auto-wound)"
+          ]
+        },
+        {
+          "name": "Ethereal Steed’s Ghostly Hooves and Teeth",
+          "type": "Melee",
+          "range": "Melee",
+          "attacks": 3,
+          "hit": "5+",
+          "wound": "3+",
+          "rend": 0,
+          "damage": 1,
+          "keywords": [
+            "Crit (Auto-wound)",
+            "Companion"
+          ]
+        }
+      ],
+      "abilities": [
+        {
+          "name": "Phantasmal Discorporation",
+          "timing": "Once Per Battle, Your Movement Phase",
+          "effect": "Remove this unit from the battlefield and set it up again on the battlefield more than 6\" from all enemy units.",
+          "phases": [
+            "Movement"
+          ]
+        }
+      ],
+      "keywords": [
+        "CAVALRY",
+        "FLY",
+        "WARD (5+)"
+      ]
+    }
+  ]
+}
