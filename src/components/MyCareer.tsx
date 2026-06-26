@@ -2,15 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { MatchReport, FactionType } from '../types';
 import { FACTIONS } from '../data/factions';
 import { ALL_SPEARHEADS, getSpearheadsByFaction } from '../utils/spearheadLoader';
-import { auth, getUserProfile, saveUserProfile, RosterItem, UserProfile } from '../utils/firebase';
 import { useToast } from './Toast';
 import { 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  signOut, 
-  onAuthStateChanged, 
-  User as FirebaseUser 
-} from 'firebase/auth';
+  supabase, signIn, signUp, signOut as supabaseSignOut, 
+  onAuthChange, getProfile, saveProfile,
+  getRosters, saveRosterItem, deleteRosterItem, RosterItem 
+} from '../utils/supabase';
+import { User as SupabaseUser } from '@supabase/supabase-js';
+
+interface UserProfile {
+  uid: string;
+  email: string;
+  username: string;
+  roster: RosterItem[];
+  favFaction: string | null;
+}
 import { 
   Trophy, 
   Sword, 
@@ -41,7 +47,7 @@ interface MyCareerProps {
 
 export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory }: MyCareerProps) {
   // Authentication & Profile States
-  const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
   const [email, setEmail] = useState('');
@@ -69,16 +75,26 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
 
   const { showToast } = useToast();
 
-  // Monitor auth state changes
+  // Monitor auth state changes via Supabase
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
-      if (currentUser) {
+    const unsubscribe = onAuthChange(async (session) => {
+      const sbUser = session?.user || null;
+      setUser(sbUser);
+      if (sbUser) {
         setAuthLoading(true);
         try {
-          const userProfile = await getUserProfile(currentUser.uid, currentUser.email || '');
-          setProfile(userProfile);
-          setEditedName(userProfile.username);
+          const { data: profileData } = await getProfile(sbUser.id);
+          const { data: rosterData } = await getRosters(sbUser.id);
+
+          const username = profileData?.username || sbUser.email?.split('@')[0] || 'Warlord';
+          setProfile({
+            uid: sbUser.id,
+            email: sbUser.email || '',
+            username,
+            roster: rosterData || [],
+            favFaction: profileData?.fav_faction || null,
+          });
+          setEditedName(username);
         } catch (err: any) {
           console.error("Error loading user profile:", err);
         } finally {
@@ -89,7 +105,7 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribe.unsubscribe();
   }, []);
 
   // Set default spearhead whenever roster faction changes
@@ -114,36 +130,33 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
 
     try {
       if (authMode === 'login') {
-        await signInWithEmailAndPassword(auth, email, password);
+        const { error } = await signIn(email, password);
+        if (error) throw error;
       } else {
         if (!usernameInput.trim()) {
           setAuthError('Please enter a custom warlord handle.');
           setAuthLoading(false);
           return;
         }
-        const credential = await createUserWithEmailAndPassword(auth, email, password);
-        // Create custom profile in firestore
-        const defaultProfile: UserProfile = {
-          uid: credential.user.uid,
-          email: email,
-          username: usernameInput.trim(),
-          roster: [],
-          favFaction: null
-        };
-        await saveUserProfile(credential.user.uid, defaultProfile);
-        setProfile(defaultProfile);
-        setEditedName(defaultProfile.username);
+        const { error } = await signUp(email, password);
+        if (error) throw error;
+
+        // Update profile username via Supabase
+        const session = (await supabase.auth.getSession()).data.session;
+        if (session?.user) {
+          await saveProfile(session.user.id, { username: usernameInput.trim() });
+        }
       }
       setEmail('');
       setPassword('');
       setUsernameInput('');
     } catch (err: any) {
       console.error(err);
-      if (err.code === 'auth/invalid-credential') {
+      if (err.code === 'invalid_credentials') {
         setAuthError('Incorrect email or credentials.');
-      } else if (err.code === 'auth/email-already-in-use') {
+      } else if (err.code === 'email_already_exists' || err.message?.includes('already registered')) {
         setAuthError('This email is already registered.');
-      } else if (err.code === 'auth/weak-password') {
+      } else if (err.code === 'weak_password' || err.message?.includes('weak')) {
         setAuthError('Password must exceed 6 characters.');
       } else {
         setAuthError(err.message || 'Authentication error.');
@@ -155,7 +168,8 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
 
   const handleSignOut = async () => {
     try {
-      await signOut(auth);
+      const { error } = await supabaseSignOut();
+      if (error) throw error;
       setUser(null);
       setProfile(null);
     } catch (err: any) {
@@ -168,7 +182,7 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
     if (!profile || !user || !editedName.trim()) return;
 
     try {
-      await saveUserProfile(user.uid, { username: editedName.trim() });
+      await saveProfile(user.id, { username: editedName.trim() });
       setProfile({
         ...profile,
         username: editedName.trim()
@@ -187,7 +201,7 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
     const chosenSpearhead = ALL_SPEARHEADS.find(s => s.id === rosterSpearheadId);
     const spearheadLabel = chosenSpearhead ? chosenSpearhead.spearheadName : 'Custom Host';
 
-    const newItem: RosterItem = {
+    const itemData: Partial<RosterItem> = {
       id: editingRosterId || Math.random().toString(36).substring(2, 11),
       faction: rosterFaction,
       spearheadId: rosterSpearheadId,
@@ -198,41 +212,38 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
       draws: Number(rosterDraws) || 0,
     };
 
-    let updatedRoster = [...profile.roster];
-
-    if (editingRosterId) {
-      updatedRoster = updatedRoster.map(item => item.id === editingRosterId ? newItem : item);
-    } else {
-      if (updatedRoster.length >= 3) {
-        showToast("Maximum roster limit of 3 forces reached.", 'info');
-        return;
-      }
-      updatedRoster.push(newItem);
+    if (!editingRosterId && profile.roster.length >= 3) {
+      showToast("Maximum roster limit of 3 forces reached.", 'info');
+      return;
     }
 
-    // Determine favorite faction simply based on Roster counts
-    const counts: Record<string, number> = {};
-    updatedRoster.forEach(v => {
-      counts[v.faction] = (counts[v.faction] || 0) + 1;
-    });
-    let topFaction: FactionType | null = profile.favFaction;
-    let maxC = 0;
-    Object.entries(counts).forEach(([f, c]) => {
-      if (c > maxC) {
-        maxC = c;
-        topFaction = f as FactionType;
-      }
-    });
-
     try {
-      await saveUserProfile(user.uid, { roster: updatedRoster, favFaction: topFaction });
-      setProfile({
-        ...profile,
-        roster: updatedRoster,
-        favFaction: topFaction
+      await saveRosterItem(user.id, itemData);
+
+      // Refresh roster from Supabase
+      const { data: freshRosters } = await getRosters(user.id);
+
+      const counts: Record<string, number> = {};
+      (freshRosters || []).forEach(v => {
+        counts[v.faction] = (counts[v.faction] || 0) + 1;
+      });
+      let topFaction: string | null = null;
+      let maxC = 0;
+      Object.entries(counts).forEach(([f, c]) => {
+        if (c > maxC) { maxC = c; topFaction = f; }
       });
 
-      // Clear add form states
+      // Update profile favFaction
+      if (topFaction) {
+        await saveProfile(user.id, { fav_faction: topFaction });
+      }
+
+      setProfile({
+        ...profile,
+        roster: freshRosters || [],
+        favFaction: topFaction as FactionType | null,
+      });
+
       setShowAddRosterForm(false);
       setEditingRosterId(null);
       setRosterCustomName('');
@@ -261,12 +272,13 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
     if (!profile || !user) return;
     if (!confirm("Are you sure you want to dismiss this army from your active battle standard roster?")) return;
 
-    const updatedRoster = profile.roster.filter(item => item.id !== itemId);
     try {
-      await saveUserProfile(user.uid, { roster: updatedRoster });
+      const { error } = await deleteRosterItem(itemId);
+      if (error) throw error;
+      const { data: freshRosters } = await getRosters(user.id);
       setProfile({
         ...profile,
-        roster: updatedRoster
+        roster: freshRosters || []
       });
     } catch (err) {
       console.error("Failed to remove roster item:", err);

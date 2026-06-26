@@ -3,11 +3,10 @@ import { League, LeagueMember, MatchReport, FactionType } from '../types';
 import { FACTIONS } from '../data/factions';
 import { encodeMatchReport, decodeMatchReport } from '../utils/qr';
 import QRCode from 'qrcode';
-import { auth } from '../utils/firebase';
-import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
-import { getUserProfile, UserProfile } from '../utils/firebase';
 import { useToast } from './Toast';
 import {
+  supabase, signIn, signUp, signOut as supabaseSignOut,
+  onAuthChange, getProfile, saveProfile,
   subscribeToPublicLeagues,
   subscribeToUserLeagues,
   createLeague,
@@ -16,10 +15,11 @@ import {
   rejectJoinRequest,
   promoteToAdmin,
   demoteFromAdmin,
-  addMatchToLeague as firestoreAddMatch,
+  addMatchToLeague,
   leaveLeague,
-  deleteLeague as firestoreDeleteLeague
-} from '../utils/firebase';
+  deleteLeague
+} from '../utils/supabase';
+import { User as SupabaseUser } from '@supabase/supabase-js';
 import {
   Trophy, Users, Calendar, Award, Share2, Plus,
   FileInput, Check, Copy, Star, Skull, HelpCircle, ArrowUpRight,
@@ -42,8 +42,8 @@ export default function LeagueTracker({
   onLeaguesChange
 }: LeagueTrackerProps) {
   // Auth state
-  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
-  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [sbUser, setSbUser] = useState<SupabaseUser | null>(null);
+  const [profile, setProfile] = useState<any>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
   // Navigation
@@ -82,22 +82,23 @@ export default function LeagueTracker({
 
   // Derived values
   const currentUsername = profile?.username || localStorage.getItem('sgc_username') || 'Anonymous';
-  const isAdmin = activeLeague?.members?.some(m => m.uid === firebaseUser?.uid && m.role === 'admin') ?? false;
-  const isMember = activeLeague?.memberUids?.includes(firebaseUser?.uid || '') ?? false;
+  const isAdmin = activeLeague?.members?.some(m => m.uid === sbUser?.id && m.role === 'admin') ?? false;
+  const isMember = activeLeague?.memberUids?.includes(sbUser?.id || '') ?? false;
   const pendingRequests = activeLeague?.joinRequests?.filter(r => r.status === 'pending') || [];
-  const myPendingRequest = activeLeague?.joinRequests?.find(r => r.uid === firebaseUser?.uid && r.status === 'pending');
+  const myPendingRequest = activeLeague?.joinRequests?.find(r => r.uid === sbUser?.id && r.status === 'pending');
 
   const { showToast } = useToast();
 
   // Auth listener
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setFirebaseUser(user);
+    const unsubscribe = onAuthChange(async (session) => {
+      const user = session?.user || null;
+      setSbUser(user);
       setAuthLoading(false);
       if (user) {
         try {
-          const p = await getUserProfile(user.uid, user.email || '');
-          setProfile(p);
+          const { data: profileData } = await getProfile(user.id);
+          setProfile(profileData);
         } catch (e) {
           console.error('Failed to load profile:', e);
         }
@@ -105,7 +106,7 @@ export default function LeagueTracker({
         setProfile(null);
       }
     });
-    return unsubscribe;
+    return unsubscribe.unsubscribe;
   }, []);
 
   // Loading states for first data
@@ -124,20 +125,20 @@ export default function LeagueTracker({
 
   // Subscribe to user's leagues
   useEffect(() => {
-    if (!firebaseUser) {
+    if (!sbUser) {
       setMyLeagues([]);
       setMyLeaguesLoading(false);
       onLeaguesChange?.([]);
       return;
     }
     setMyLeaguesLoading(true);
-    const unsubscribe = subscribeToUserLeagues(firebaseUser.uid, (leagues) => {
+    const unsubscribe = subscribeToUserLeagues(sbUser.id, (leagues) => {
       setMyLeagues(leagues);
       setMyLeaguesLoading(false);
       onLeaguesChange?.(leagues);
     });
     return unsubscribe;
-  }, [firebaseUser, onLeaguesChange]);
+  }, [sbUser, onLeaguesChange]);
 
   // When active league changes, find it from available data
   useEffect(() => {
@@ -176,12 +177,12 @@ export default function LeagueTracker({
   }, [activeQRReport]);
 
   const handleCreateLeague = async () => {
-    if (!newLeagueName.trim() || !firebaseUser) return;
+    if (!newLeagueName.trim() || !sbUser) return;
     try {
       const leagueId = await createLeague({
         name: newLeagueName.trim(),
         description: newLeagueDescription.trim(),
-        createdBy: firebaseUser.uid,
+        createdBy: sbUser.id,
         createdByName: currentUsername
       });
       setActiveLeagueId(leagueId);
@@ -195,10 +196,10 @@ export default function LeagueTracker({
   };
 
   const handleRequestJoin = async (leagueId: string) => {
-    if (!firebaseUser) return;
+    if (!sbUser) return;
     setJoinRequestMsg({ text: '', error: false });
     try {
-      await requestJoinLeague(leagueId, firebaseUser.uid, currentUsername);
+      await requestJoinLeague(leagueId, sbUser.id, currentUsername);
       setJoinRequestMsg({ text: 'Join request submitted! Awaiting admin approval.', error: false });
     } catch (e: any) {
       setJoinRequestMsg({ text: e.message, error: true });
@@ -243,10 +244,10 @@ export default function LeagueTracker({
   };
 
   const handleLeaveLeague = async () => {
-    if (!activeLeagueId || !firebaseUser) return;
+    if (!activeLeagueId || !sbUser) return;
     if (!confirm('Leave this conclave? Your stats will be removed.')) return;
     try {
-      await leaveLeague(activeLeagueId, firebaseUser.uid);
+      await leaveLeague(activeLeagueId, sbUser.id);
       setView('browse');
       setActiveLeagueId('');
       setLeaveMsg({ text: 'You have left the conclave.', error: false });
@@ -260,7 +261,7 @@ export default function LeagueTracker({
     if (!activeLeagueId || !isAdmin) return;
     if (!confirm('Permanently delete this entire conclave? This is irreversible.')) return;
     try {
-      await firestoreDeleteLeague(activeLeagueId);
+      await deleteLeague(activeLeagueId);
       setView('browse');
       setActiveLeagueId('');
     } catch (e: any) {
@@ -270,7 +271,7 @@ export default function LeagueTracker({
 
   const handleAddMatch = async (leagueId: string, report: MatchReport) => {
     try {
-      await firestoreAddMatch(leagueId, report);
+      await addMatchToLeague(leagueId, report);
       setActiveQRReport(report);
     } catch (e: any) {
       if (e.message === 'Duplicate match') {
@@ -351,7 +352,7 @@ export default function LeagueTracker({
   );
 
   function renderBrowseView() {
-    const leagues = browseTab === 'mine' ? (firebaseUser ? myLeagues : []) : publicLeagues;
+    const leagues = browseTab === 'mine' ? (sbUser ? myLeagues : []) : publicLeagues;
     return (
       <div className="space-y-6">
         {/* Header */}
@@ -363,7 +364,7 @@ export default function LeagueTracker({
             <p className="text-xs text-zinc-500 mt-1">Browse public leagues or create your own competitive season.</p>
           </div>
           <div className="flex items-center gap-2">
-            {firebaseUser ? (
+            {sbUser ? (
               <button
                 onClick={() => setIsCreating(true)}
                 className="px-4 py-2 text-xs font-extrabold text-black bg-amber-500 hover:bg-amber-400 rounded-lg cursor-pointer transition flex items-center gap-1"
@@ -377,7 +378,7 @@ export default function LeagueTracker({
         </div>
 
         {/* Auth prompt for unauthenticated users */}
-        {!firebaseUser && (
+        {!sbUser && (
           <div className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5 flex items-center gap-3">
             <Sparkles className="h-5 w-5 text-amber-400 shrink-0" />
             <div>
@@ -400,7 +401,7 @@ export default function LeagueTracker({
         )}
 
         {/* Tab switcher */}
-        {firebaseUser && (
+        {sbUser && (
           <div className="flex gap-2">
             <button
               onClick={() => setBrowseTab('all')}
@@ -460,8 +461,8 @@ export default function LeagueTracker({
           return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {leagues.map((league) => {
-              const userIsMember = league.memberUids?.includes(firebaseUser?.uid || '');
-              const userHasPendingRequest = league.joinRequests?.some(r => r.uid === firebaseUser?.uid && r.status === 'pending');
+              const userIsMember = league.memberUids?.includes(sbUser?.id || '');
+              const userHasPendingRequest = league.joinRequests?.some(r => r.uid === sbUser?.id && r.status === 'pending');
               return (
                 <div
                   key={league.id}
@@ -496,7 +497,7 @@ export default function LeagueTracker({
                     <div className="flex items-center gap-1 text-[10px] text-amber-400 font-bold">
                       <Timer className="h-3 w-3" /> Request Pending
                     </div>
-                  ) : firebaseUser ? (
+                  ) : sbUser ? (
                     <button
                       onClick={(e) => { e.stopPropagation(); handleRequestJoin(league.id); }}
                       className="w-full py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/25 text-amber-400 font-bold text-[10px] transition border border-amber-500/20 cursor-pointer"
@@ -630,7 +631,7 @@ export default function LeagueTracker({
               <Timer className="h-3 w-3" /> Join Request Pending
             </span>
           )}
-          {!isMember && !myPendingRequest && firebaseUser && (
+          {!isMember && !myPendingRequest && sbUser && (
             <button
               onClick={() => handleRequestJoin(league.id)}
               className="px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/25 text-amber-400 font-bold border border-amber-500/20 cursor-pointer"
@@ -745,7 +746,7 @@ export default function LeagueTracker({
                       <span className="text-[10px] px-1.5 py-0.2 rounded bg-zinc-800 text-zinc-400 font-mono">Member</span>
                     )}
                   </div>
-                  {member.uid !== firebaseUser?.uid && (
+                  {member.uid !== sbUser?.id && (
                     <div className="flex gap-2">
                       {member.role === 'member' ? (
                         <button
