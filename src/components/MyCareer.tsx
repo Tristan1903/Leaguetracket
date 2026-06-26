@@ -108,6 +108,7 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
     return () => unsubscribe.unsubscribe();
   }, []);
 
+
   // Set default spearhead whenever roster faction changes
   useEffect(() => {
     const available = getSpearheadsByFaction(rosterFaction);
@@ -690,7 +691,9 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
                     className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-xs text-white focus:border-amber-500 outline-hidden font-medium cursor-pointer"
                     id="roster-faction-select"
                   >
-                    {Object.values(FACTIONS).map(f => (
+                    {Object.values(FACTIONS)
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map(f => (
                       <option key={f.id} value={f.id}>{f.name}</option>
                     ))}
                   </select>
@@ -704,7 +707,9 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
                     className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-xs text-white focus:border-amber-500 outline-hidden font-medium cursor-pointer"
                     id="roster-spearhead-select"
                   >
-                    {getSpearheadsByFaction(rosterFaction).map(s => (
+                    {[...getSpearheadsByFaction(rosterFaction)]
+                      .sort((a, b) => a.spearheadName.localeCompare(b.spearheadName))
+                      .map(s => (
                       <option key={s.id} value={s.id}>{s.spearheadName}</option>
                     ))}
                     {getSpearheadsByFaction(rosterFaction).length === 0 && (

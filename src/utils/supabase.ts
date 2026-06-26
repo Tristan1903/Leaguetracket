@@ -29,10 +29,15 @@ export async function signOut() {
 }
 
 export function onAuthChange(callback: (session: Session | null) => void) {
+  // Bootstrap with current session (handles page refresh where INITIAL_SESSION may not fire)
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    callback(session);
+  });
+
   const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
     callback(session);
   });
-  return subscription;
+  return { unsubscribe: () => subscription.unsubscribe() };
 }
 
 export async function getProfile(uid: string) {
