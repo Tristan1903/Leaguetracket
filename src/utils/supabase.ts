@@ -45,11 +45,16 @@ export async function getProfile(uid: string) {
 }
 
 export async function saveProfile(uid: string, updates: Record<string, any>) {
+  const row = { id: uid, username: updates.username || 'Warlord', ...updates };
   const { data, error } = await supabase
     .from('profiles')
-    .upsert({ id: uid, ...updates })
+    .upsert(row, { onConflict: 'id' })
     .select()
     .single();
+  if (error && error.code === '23503') {
+    // Foreign key violation — profiles table exists but no auth user row yet
+    return { data: null, error };
+  }
   return { data, error };
 }
 
@@ -438,6 +443,12 @@ export async function createLeague(data: {
 }): Promise<string> {
   const leagueId = generateId('conclave');
   const now = new Date().toISOString();
+
+  // Ensure creator has a profile row (handles sign-ups before trigger existed)
+  await supabase.from('profiles').upsert(
+    { id: data.createdBy, username: data.createdByName },
+    { onConflict: 'id', ignoreDuplicates: true }
+  );
 
   const { error: leagueError } = await supabase.from('leagues').insert({
     id: leagueId,
