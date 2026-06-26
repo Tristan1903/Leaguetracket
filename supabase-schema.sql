@@ -176,6 +176,33 @@ alter table league_members enable row level security;
 create policy "Members are publicly readable"
   on league_members for select using (true);
 
+create policy "Members can insert own membership"
+  on league_members for insert with check (auth.uid() = user_id);
+
+-- League players
+alter table league_players enable row level security;
+
+create policy "League players are publicly readable"
+  on league_players for select using (true);
+
+create policy "Players can be inserted by league members"
+  on league_players for insert with check (
+    exists (
+      select 1 from league_members
+      where league_members.league_id = league_players.league_id
+      and league_members.user_id = auth.uid()
+    )
+  );
+
+create policy "Players can be updated by league members"
+  on league_players for update using (
+    exists (
+      select 1 from league_members
+      where league_members.league_id = league_players.league_id
+      and league_members.user_id = auth.uid()
+    )
+  );
+
 -- Join requests
 alter table league_join_requests enable row level security;
 
@@ -192,12 +219,6 @@ create policy "Users can create their own join requests"
   on league_join_requests for insert with check (
     auth.uid() = user_id and status = 'pending'
   );
-
--- League players
-alter table league_players enable row level security;
-
-create policy "League players are publicly readable"
-  on league_players for select using (true);
 
 -- Matches
 alter table matches enable row level security;
