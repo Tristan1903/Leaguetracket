@@ -28,7 +28,7 @@ create trigger on_auth_user_created
 
 -- 2. Rosters
 create table rosters (
-  id uuid default gen_random_uuid() primary key,
+  id text primary key,
   user_id uuid references profiles(id) on delete cascade not null,
   faction text not null,
   spearhead_id text not null,
