@@ -95,6 +95,20 @@ export interface MatchReport {
   verificationCode: string; // Hash verification string
 }
 
+export interface LeagueMember {
+  uid: string;
+  username: string;
+  role: 'admin' | 'member';
+  joinedAt: string;
+}
+
+export interface JoinRequest {
+  uid: string;
+  username: string;
+  status: 'pending' | 'approved' | 'rejected';
+  requestedAt: string;
+}
+
 export interface LeaguePlayer {
   id: string;
   name: string;
@@ -106,15 +120,23 @@ export interface LeaguePlayer {
   vpScored: number;
   casualtiesSlain: number;
   underdogWins: number;
+  linkedUid?: string;
 }
 
 export interface League {
   id: string;
   name: string;
+  description: string;
   inviteCode: string;
   createdAt: string;
+  createdBy: string;
+  createdByName: string;
+  isPublic: boolean;
+  memberUids: string[];
+  members: LeagueMember[];
   players: LeaguePlayer[];
   matches: MatchReport[];
+  joinRequests: JoinRequest[];
 }
 
 export interface UserCareer {

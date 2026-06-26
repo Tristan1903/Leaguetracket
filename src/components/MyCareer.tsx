@@ -3,6 +3,7 @@ import { MatchReport, FactionType } from '../types';
 import { FACTIONS } from '../data/factions';
 import { ALL_SPEARHEADS, getSpearheadsByFaction } from '../utils/spearheadLoader';
 import { auth, getUserProfile, saveUserProfile, RosterItem, UserProfile } from '../utils/firebase';
+import { useToast } from './Toast';
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
@@ -65,6 +66,8 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
 
   // State to support editing an existing roster item
   const [editingRosterId, setEditingRosterId] = useState<string | null>(null);
+
+  const { showToast } = useToast();
 
   // Monitor auth state changes
   useEffect(() => {
@@ -201,7 +204,7 @@ export default function MyCareer({ onSelectFaction, gameHistory, onClearHistory 
       updatedRoster = updatedRoster.map(item => item.id === editingRosterId ? newItem : item);
     } else {
       if (updatedRoster.length >= 3) {
-        alert("Maximum roster limit of 3 forces reached.");
+        showToast("Maximum roster limit of 3 forces reached.", 'info');
         return;
       }
       updatedRoster.push(newItem);

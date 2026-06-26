@@ -3,16 +3,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import MyCareer from './components/MyCareer';
 import QuickPlay from './components/QuickPlay';
 import LeagueTracker from './components/LeagueTracker';
 import SpearheadBrowser from './components/SpearheadBrowser';
+import ErrorBoundary from './components/ErrorBoundary';
+import { ToastProvider, useToast } from './components/Toast';
 import { MatchReport, League, FactionType } from './types';
-import { Sword, Trophy, User, BookOpen, Shield, HelpCircle, X } from 'lucide-react';
+import { Sword, Trophy, User, BookOpen, Shield, HelpCircle, X, Wifi, WifiOff } from 'lucide-react';
 import { FACTIONS } from './data/factions';
 
 export default function App() {
+  return (
+    <ToastProvider>
+      <AppContent />
+    </ToastProvider>
+  );
+}
+
+function AppContent() {
+  const { showToast } = useToast();
+
   const [activeTab, setActiveTab] = useState<'career' | 'play' | 'leagues'>('career');
 
   // Persistence States
@@ -27,55 +39,67 @@ export default function App() {
   // Selected Faction info drawer for career referencing
   const [referencedFaction, setReferencedFaction] = useState<FactionType | null>(null);
 
-  // Load from local storage
+  // Online/offline detection
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [showOnlineBanner, setShowOnlineBanner] = useState(false);
+
+  // Load game history from local storage (leagues now come from Firestore)
   useEffect(() => {
     try {
       const savedHistory = localStorage.getItem('sgc_history');
       if (savedHistory) {
         setGameHistory(JSON.parse(savedHistory));
       }
-
-      const savedLeagues = localStorage.getItem('sgc_leagues');
-      if (savedLeagues) {
-        setAllLeagues(JSON.parse(savedLeagues));
-      }
     } catch (e) {
       console.error('Failed to parse cached combat data:', e);
     }
   }, []);
 
-  // Sync to local storage
+  // Online/offline listeners
+  useEffect(() => {
+    const goOnline = () => {
+      setIsOnline(true);
+      setShowOnlineBanner(true);
+      setTimeout(() => setShowOnlineBanner(false), 3000);
+    };
+    const goOffline = () => {
+      setIsOnline(false);
+      setShowOnlineBanner(false);
+    };
+    window.addEventListener('online', goOnline);
+    window.addEventListener('offline', goOffline);
+    return () => {
+      window.removeEventListener('online', goOnline);
+      window.removeEventListener('offline', goOffline);
+    };
+  }, []);
+
+  // Sync game history to local storage
   const updateHistory = (history: MatchReport[]) => {
     setGameHistory(history);
     localStorage.setItem('sgc_history', JSON.stringify(history));
   };
 
-  const updateLeagues = (leagues: League[]) => {
-    setAllLeagues(leagues);
-    localStorage.setItem('sgc_leagues', JSON.stringify(leagues));
-  };
-
-  const handleGameFinished = (report: MatchReport) => {
-    // 1. Add to personal career stats history
+  const handleGameFinished = useCallback((report: MatchReport) => {
     const updatedHistory = [report, ...gameHistory];
     updateHistory(updatedHistory);
 
-    // 2. Queue for league updates if we were running a league match
     if (activeLeagueId) {
       setCompletedMatchQueue(report);
-      setActiveTab('leagues'); // Automatically route to Leagues tracker!
+      setActiveTab('leagues');
     } else {
-      // Prompt quick play success
-      alert(`⚔️ Quick Play Battle Completed!\n\n${report.playerA.name} [${report.playerA.score}] VS ${report.playerB.name} [${report.playerB.score}]\nResult: ${
-        report.winner === 'Draw' ? 'Tactical Stand-off (Draw)' : `Warlord ${report.winner === 'A' ? report.playerA.name : report.playerB.name} is Victorious!`
-      }`);
-      setActiveTab('career'); // Route back to Career logs
+      showToast(
+        `Battle Complete! ${report.playerA.name} [${report.playerA.score}] VS ${report.playerB.name} [${report.playerB.score}] — ${
+          report.winner === 'Draw' ? 'Tactical Stand-off' : `${report.winner === 'A' ? report.playerA.name : report.playerB.name} Victorious!`
+        }`,
+        'success'
+      );
+      setActiveTab('career');
     }
 
-    // Reset active league game status
     setActiveLeagueId(null);
     setActiveLeagueName(null);
-  };
+  }, [gameHistory, activeLeagueId, showToast]);
 
   const handleStartLeagueGame = (leagueId: string, leagueName: string) => {
     setActiveLeagueId(leagueId);
@@ -124,6 +148,26 @@ export default function App() {
       {/* Decorative cosmic header lights */}
       <div className="absolute top-0 left-1/4 h-72 w-96 rounded-full bg-amber-500/[0.03] blur-3xl" />
       <div className="absolute top-0 right-1/4 h-72 w-96 rounded-full bg-blue-500/[0.03] blur-3xl" />
+
+      {/* Offline Banner */}
+      {!isOnline && (
+        <div className="relative z-50 bg-red-950/80 backdrop-blur-md border-b border-red-500/20 py-2 px-4 text-center">
+          <span className="text-xs font-bold text-red-300 flex items-center justify-center gap-2">
+            <WifiOff className="h-3.5 w-3.5" />
+            Connection to the Mortal Realms lost — changes will sync when reconnected
+          </span>
+        </div>
+      )}
+
+      {/* Online restored banner (shows briefly after reconnect) */}
+      {showOnlineBanner && (
+        <div className="relative z-50 bg-emerald-950/60 backdrop-blur-md border-b border-emerald-500/10 py-1.5 px-4 text-center">
+          <span className="text-[10px] font-bold text-emerald-400 flex items-center justify-center gap-1.5">
+            <Wifi className="h-3 w-3" />
+            Reconnected to the Aetheric Network
+          </span>
+        </div>
+      )}
 
       {/* Main Top Navigation Header */}
       <header className="relative z-50 border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-xl sticky top-0 py-4.5 px-4 sm:px-6">
@@ -196,47 +240,62 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Panel */}
+      {/* Main Panel with Error Boundaries per tab */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 relative z-10">
-        {activeTab === 'career' && (
-          <MyCareer
-            onSelectFaction={(f) => setReferencedFaction(f)}
-            gameHistory={gameHistory}
-            onClearHistory={clearCareerChronology}
-          />
-        )}
+        <div key="career-tab">
+          <ErrorBoundary>
+            {activeTab === 'career' && (
+              <MyCareer
+                onSelectFaction={(f) => setReferencedFaction(f)}
+                gameHistory={gameHistory}
+                onClearHistory={clearCareerChronology}
+              />
+            )}
+          </ErrorBoundary>
+        </div>
 
-        {activeTab === 'play' && (
-          <QuickPlay
-            onGameFinished={handleGameFinished}
-            activeLeagueId={activeLeagueId}
-            activeLeagueName={activeLeagueName}
-            onSelectFaction={(f) => setReferencedFaction(f)}
-            allLeagues={allLeagues}
-          />
-        )}
+        <div key="play-tab">
+          <ErrorBoundary>
+            {activeTab === 'play' && (
+              <QuickPlay
+                onGameFinished={handleGameFinished}
+                activeLeagueId={activeLeagueId}
+                activeLeagueName={activeLeagueName}
+                onSelectFaction={(f) => setReferencedFaction(f)}
+                allLeagues={allLeagues}
+              />
+            )}
+          </ErrorBoundary>
+        </div>
 
-        {activeTab === 'leagues' && (
-          <LeagueTracker
-            onStartLeagueGame={handleStartLeagueGame}
-            completedMatchQueue={completedMatchQueue}
-            onClearQueue={() => setCompletedMatchQueue(null)}
-            allLeagues={allLeagues}
-            setAllLeagues={updateLeagues}
-          />
-        )}
+        <div key="leagues-tab">
+          <ErrorBoundary>
+            {activeTab === 'leagues' && (
+              <LeagueTracker
+                onStartLeagueGame={handleStartLeagueGame}
+                completedMatchQueue={completedMatchQueue}
+                onClearQueue={() => setCompletedMatchQueue(null)}
+                onLeaguesChange={setAllLeagues}
+              />
+            )}
+          </ErrorBoundary>
+        </div>
       </main>
 
       {/* Modal / Slide-over Info Drawer for referenced faction */}
-      {referencedFaction && (
-        <SpearheadBrowser
-          factionId={referencedFaction}
-          onClose={() => setReferencedFaction(null)}
-          getFactionColors={getFactionColors}
-        />
-      )}
+      <div key="spearhead-browser">
+        <ErrorBoundary>
+          {referencedFaction && (
+            <SpearheadBrowser
+              factionId={referencedFaction}
+              onClose={() => setReferencedFaction(null)}
+              getFactionColors={getFactionColors}
+            />
+          )}
+        </ErrorBoundary>
+      </div>
 
-      {/* Humble Footer, clean, readable, professional */}
+      {/* Humble Footer */}
       <footer className="border-t border-zinc-900 bg-zinc-950/40 py-6 text-center text-xs text-zinc-650">
         <p className="font-mono">SPEARHEAD COHORT CRUCIBLE — OFFLINE-SENSITIVE SECURE DATA RECORDED LOCALLY ON DEVICE — VERSION 1.4.0</p>
       </footer>
